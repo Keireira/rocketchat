@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Page = styled.div`
+export const IndexTemplate = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;

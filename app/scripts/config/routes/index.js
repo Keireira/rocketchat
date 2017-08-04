@@ -6,7 +6,10 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { Bundle } from 'hoc';
+
+import Chat from 'bricks/Chat';
 import Index from 'templates/Index';
+
 import loadLoginPage from 'bundle-loader?lazy&name=Main!pages/LoginPage';
 
 const LoginPage = (props) => (
@@ -22,6 +25,7 @@ const AppRouter = ({ ...ref }) => {
         <Route exact path="/" component={LoginPage} />
 
         <Index>
+          <Route path="/chat" component={Chat} />
         </Index>
 
         <Redirect from="*" to="/" />
