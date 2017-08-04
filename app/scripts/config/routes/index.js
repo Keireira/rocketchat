@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import { Bundle } from 'hoc';
 import Index from 'templates/Index';
-import loadMain from 'bundle-loader?lazy&name=Main!pages/Main';
+import loadLoginPage from 'bundle-loader?lazy&name=Main!pages/LoginPage';
 
-const Main = (props) => (
-  <Bundle load={loadMain}>
-    {(Main) => <Main {...props} />}
+const LoginPage = (props) => (
+  <Bundle load={loadLoginPage}>
+    {(LoginPage) => <LoginPage {...props} />}
   </Bundle>
 );
 
@@ -19,11 +19,12 @@ const AppRouter = ({ ...ref }) => {
   return (
     <Router {...ref}>
       <Switch>
-        <Index>
-          <Route exact path="/" component={Main} />
+        <Route exact path="/" component={LoginPage} />
 
-          <Redirect from="*" to="/" />
+        <Index>
         </Index>
+
+        <Redirect from="*" to="/" />
       </Switch>
     </Router>
   );
