@@ -1,16 +1,16 @@
 import actionsTMP from './actions';
-import scrollToTMP from './scrollTo';
 import canSetLangTMP from './canSetLang';
+import formatBalanceTMP from './formatBalance';
 import getCurrentLocaleTMP from './getCurrentLocale';
 
 export const actions = actionsTMP;
-export const scrollTo = scrollToTMP;
 export const canSetLang = canSetLangTMP;
+export const formatBalance = formatBalanceTMP;
 export const getCurrentLocale = getCurrentLocaleTMP;
 
 export default {
   actions,
-  scrollTo,
   canSetLang,
+  formatBalance,
   getCurrentLocale,
 };
