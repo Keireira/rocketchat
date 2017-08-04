@@ -6,7 +6,10 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { Bundle } from 'hoc';
+
+import Chat from 'bricks/Chat';
 import Index from 'templates/Index';
+
 import loadLoginPage from 'bundle-loader?lazy&name=Main!pages/LoginPage';
 
 const LoginPage = (props) => (
@@ -15,14 +18,20 @@ const LoginPage = (props) => (
   </Bundle>
 );
 
-const AppRouter = ({ ...ref }) => {
+const showIndex = (Component, props) => {
   return (
-    <Router {...ref}>
+    <Index>
+      <Component {...props} />
+    </Index>
+  );
+};
+
+const AppRouter = ({ ...props }) => {
+  return (
+    <Router {...props}>
       <Switch>
         <Route exact path="/" component={LoginPage} />
-
-        <Index>
-        </Index>
+        <Route path="/chat" component={(props) => showIndex(Chat, props)} />
 
         <Redirect from="*" to="/" />
       </Switch>
