@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyledChat } from './styles';
 
-const Chat = (props) => {
-  console.log(props);
+const Chat = () => {
   return (
     <StyledChat>
       This is chat

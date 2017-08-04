@@ -18,15 +18,20 @@ const LoginPage = (props) => (
   </Bundle>
 );
 
-const AppRouter = ({ ...ref }) => {
+const showIndex = (Component, props) => {
   return (
-    <Router {...ref}>
+    <Index>
+      <Component {...props} />
+    </Index>
+  );
+};
+
+const AppRouter = ({ ...props }) => {
+  return (
+    <Router {...props}>
       <Switch>
         <Route exact path="/" component={LoginPage} />
-
-        <Index>
-          <Route path="/chat" component={Chat} />
-        </Index>
+        <Route path="/chat" component={(props) => showIndex(Chat, props)} />
 
         <Redirect from="*" to="/" />
       </Switch>
