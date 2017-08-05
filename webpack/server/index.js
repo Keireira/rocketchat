@@ -1,5 +1,6 @@
 const config = require('./config');
 const frontDevServer = require('./wds');
+const expressServer = require('./express');
 const clearConsole = require('react-dev-utils/clearConsole');
 const { showLocalIP, showExternalIP } = require('../tools/helpers');
 
@@ -13,4 +14,5 @@ const { showLocalIP, showExternalIP } = require('../tools/helpers');
   });
   frontDevServer.listen(config.front.port, config.general.externalIP);
 
+  expressServer();
 })();
