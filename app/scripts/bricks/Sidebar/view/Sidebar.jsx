@@ -11,6 +11,12 @@ class Sidebar extends React.PureComponent {
     }
   };
 
+  componentWillUnmount() {
+    if (typeof this.props.clearClientAccounts === 'function') {
+      this.props.clearClientAccounts();
+    }
+  };
+
   render() {
     return (
       <StyledSidebar>

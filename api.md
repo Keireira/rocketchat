@@ -15,7 +15,6 @@ response example:
         "last_operation": {
           "amount": 6554,
           "carried_out": 1500502905,
-          "last_cart_number": 9946,
           "positive": true,
           "type": "percent"
         }
