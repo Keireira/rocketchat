@@ -26,7 +26,7 @@ const makeStubs = () => {
     // last operation
     const carried_out = random(created, created + random(20000, 333333));
     const last_cart_number = random(1111, 9999);
-    const amount = random(10, 20000).toFixed(2);
+    const amount = random(10.00, 20000.99).toFixed(2);
     const type = operationTypes[random(0, 2)];
 
     return {
@@ -45,7 +45,7 @@ const makeStubs = () => {
     };
   };
 
-  const length = random(1, 10);
+  const length = random(1, 12);
   const data = new Array(length).fill(null);
 
   return data.map(generate);
