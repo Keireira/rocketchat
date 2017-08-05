@@ -1,5 +1,4 @@
 import React from 'react';
-import { last } from 'lodash';
 import PropTypes from 'prop-types';
 
 import locales from 'locales';
@@ -19,12 +18,11 @@ import {
 } from './styles';
 import { MaximizeIcon } from 'icons/ux';
 
-const getLastOperation = (history, currency) => {
-  const lastHistoryItem = last(history);
-  const amount = formatBalance(lastHistoryItem.amount);
-  const date = formatUNIXTimestamp(lastHistoryItem.carried_out, true);
+const getLastOperation = (lastOperation, currency) => {
+  const amount = formatBalance(lastOperation.amount);
+  const date = formatUNIXTimestamp(lastOperation.carried_out, true);
 
-  const value = (lastHistoryItem.positive)
+  const value = (lastOperation.positive)
     ? <PositiveVal>{`${amount} ${currency}`}</PositiveVal>
     : <NegativeVal>{`${amount} ${currency}`}</NegativeVal>;
 
@@ -33,7 +31,7 @@ const getLastOperation = (history, currency) => {
 
 const renderAccountsView = (accounts) => {
   return accounts.map((account) => {
-    const lastOperation = getLastOperation(account.history, account.currency);
+    const lastOperation = getLastOperation(account.last_operation, account.currency);
     const created = formatUNIXTimestamp(account.created, true);
     const balance = formatBalance(account.balance);
 
