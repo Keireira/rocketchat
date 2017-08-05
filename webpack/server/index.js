@@ -1,18 +1,22 @@
 const config = require('./config');
-const frontDevServer = require('./wds');
+const frontendServer = require('./wds');
 const expressServer = require('./express');
 const clearConsole = require('react-dev-utils/clearConsole');
-const { showLocalIP, showExternalIP } = require('../tools/helpers');
 
-(() => {
+(({ front, api, general }) => {
   clearConsole();
-  console.log(showExternalIP(config.front.port));
 
-  // Front-End server running
-  frontDevServer.listen(config.front.port, config.front.host, () => {
-  	console.log(showLocalIP(config.front.host, config.front.port) + '\n');
+  frontendServer({
+    port: front.port,
+    host: front.host,
+    externalIP: general.externalIP,
+    configs: {
+      webpack: front.webpackConfig,
+      wds: front.devServerConfig,
+    },
   });
-  frontDevServer.listen(config.front.port, config.general.externalIP);
 
-  expressServer();
-})();
+  expressServer({
+    port: api.port,
+  });
+})(config);

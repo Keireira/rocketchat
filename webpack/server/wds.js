@@ -1,11 +1,14 @@
-const config = require('./config');
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 
-// Setting up webpack dev server
-const frontDevServer = new webpackDevServer(
-  webpack(config.front.webpackConfig),
-  config.front.devServerConfig
-);
+const startWDS = ({ port, host, externalIP, configs }) => {
+  const frontDevServer = new webpackDevServer(
+    webpack(configs.webpack),
+    configs.wds
+  );
 
-module.exports = frontDevServer;
+  frontDevServer.listen(port, host);
+  frontDevServer.listen(port, externalIP);
+};
+
+module.exports = startWDS;
