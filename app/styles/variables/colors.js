@@ -17,11 +17,17 @@ const colors = {
   blue_jeans: (opacity = 1) =>
     `rgba(82, 175, 241, ${opacity})`, // #52AFF1
 
+  spanish_gray: (opacity = 1) =>
+    `rgba(153, 153, 153, ${opacity})`, // #999999
+
   gainsboro: (opacity = 1) =>
     `rgba(222, 222, 222, ${opacity})`, // #DEDEDE
 
   platinum: (opacity = 1) =>
     `rgba(228, 228, 228, ${opacity})`, // #E4E4E4
+
+  light_platinum: (opacity = 1) =>
+    `rgba(231, 231, 231, ${opacity})`, // #E7E7E7
 
   white_smoke: (opacity = 1) =>
     `rgba(244, 244, 244, ${opacity})`, // #F4F4F4

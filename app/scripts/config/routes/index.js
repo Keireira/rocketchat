@@ -6,24 +6,35 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { Bundle } from 'hoc';
-import Index from 'templates/Index';
-import loadMain from 'bundle-loader?lazy&name=Main!pages/Main';
 
-const Main = (props) => (
-  <Bundle load={loadMain}>
-    {(Main) => <Main {...props} />}
+import Chat from 'bricks/Chat';
+import Index from 'templates/Index';
+
+import loadLoginPage from 'bundle-loader?lazy&name=Main!pages/LoginPage';
+
+const LoginPage = (props) => (
+  <Bundle load={loadLoginPage}>
+    {(LoginPage) => <LoginPage {...props} />}
   </Bundle>
 );
 
-const AppRouter = ({ ...ref }) => {
+const renderIndex = (Component, props) => {
   return (
-    <Router {...ref}>
-      <Switch>
-        <Index>
-          <Route exact path="/" component={Main} />
+    <Index>
+      <Component {...props} />
+    </Index>
+  );
+};
 
-          <Redirect from="*" to="/" />
-        </Index>
+const AppRouter = ({ ...props }) => {
+  return (
+    <Router {...props}>
+      <Switch>
+        <Route exact path="/" component={LoginPage} />
+
+        <Route path="/chat" render={(props) => renderIndex(Chat, props)} />
+
+        <Redirect from="*" to="/" />
       </Switch>
     </Router>
   );

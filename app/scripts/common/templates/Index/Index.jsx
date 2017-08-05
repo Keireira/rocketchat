@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { Page } from './styles';
+import { IndexTemplate } from './styles';
+import Sidebar from 'bricks/Sidebar';
 
-class Index extends React.PureComponent {
-  render() {
-    return (
-      <Page>
-        {this.props.children}
-      </Page>
-    );
-  };
+const Index = (props) => {
+  return (
+    <IndexTemplate>
+      {props.children}
+
+      <Sidebar />
+    </IndexTemplate>
+  );
 };
 
 export default Index;

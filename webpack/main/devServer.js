@@ -30,9 +30,8 @@ const stats = {
 const proxy = {
   // For integration with https://github.com/typicode/json-server
   '/api': {
-    'target': `http://${consts.HOST}:${consts.PORT + 1}`,
-    pathRewrite: {'^/api': ''},
-  }
+    target: `http://${consts.HOST}:${consts.PORT + 1}`,
+  },
 };
 
 // https://webpack.js.org/configuration/dev-server/#devserver-headers-
