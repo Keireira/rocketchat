@@ -1,4 +1,11 @@
 {
   "title": "Rокет-чат",
-  "chat_enter": "В чат!"
+  "chat_enter": "В чат!",
+
+  "account": "Счёт",
+  "accounts": "Счета",
+  "deposits": "Вклады",
+  "annual": "годовых",
+  "created": "Создан",
+  "last_operation": "Последняя операция"
 }

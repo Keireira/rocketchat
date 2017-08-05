@@ -25,7 +25,6 @@ const makeStubs = () => {
 
     // last operation
     const carried_out = random(created, created + random(20000, 333333));
-    const last_cart_number = random(1111, 9999);
     const amount = random(10.00, 20000.99).toFixed(2);
     const type = operationTypes[random(0, 2)];
 
@@ -38,7 +37,6 @@ const makeStubs = () => {
       last_operation: {
         amount: parseFloat(amount),
         carried_out: parseInt(carried_out),
-        last_cart_number: parseInt(last_cart_number),
         positive: type.positive,
         type: type.name,
       },
@@ -53,7 +51,7 @@ const makeStubs = () => {
 
 const accounts = (res, { client_id }) => {
   if (isNaN(client_id) || client_id === -666) {
-    return res.json({
+    return res.status(404).json({
       error: 'Invalid field value (client_id)',
     });
   }
