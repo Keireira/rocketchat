@@ -5,7 +5,7 @@ import { StyledLoginPage, LoginButton } from './styles';
 const LoginPage = () => {
   return (
     <StyledLoginPage>
-      <LoginButton to="/chat">
+      <LoginButton to="/chat/accounts/">
         {locales.chat_enter}
       </LoginButton>
     </StyledLoginPage>

@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const Tab = styled.div`
+export const Tab = styled(NavLink).attrs({
+  activeClassName: 'selectedTab',
+})`
   width: 50%;
   display: flex;
   align-items: center;
@@ -10,10 +13,15 @@ export const Tab = styled.div`
   font-size: 1.25rem;
   line-height: 1.25rem;
   height: 100%;
-  color: ${({ isActive, theme }) => (isActive) ? theme.white(1) : theme.blue_jeans(1)};
-  background-color: ${({ isActive, theme }) => (isActive) ? theme.blue_jeans(1) : theme.white(1)};
+  color: ${({ theme }) => theme.blue_jeans(1)};
+  background-color: $${({ theme }) => theme.white(1)};
 
   transition: all .25s ease-in-out;
+
+  &.selectedTab {
+    color: ${({ theme }) => theme.white(1)};
+    background-color: ${({ theme }) => theme.blue_jeans(1)};
+  }
 
   &:hover {
     cursor: ${({ isActive }) => (isActive) ? 'default' : 'pointer'};
