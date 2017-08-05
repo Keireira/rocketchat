@@ -9,7 +9,7 @@ export const StyledLoginPage = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: ${({ theme }) => theme.white_smoke(1)}
+  background-color: ${({ theme }) => theme.white_smoke(1)};
 `;
 
 export const LoginButton = styled(Link)`

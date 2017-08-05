@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Tab = styled.div`
   width: 50%;
-  background-color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
