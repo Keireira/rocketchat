@@ -45,12 +45,17 @@ class AccountDetails extends React.PureComponent {
 };
 
 AccountDetails.propTypes = {
-  clearAccount: PropTypes.func.isRequired,
   accountData: PropTypes.object,
+  match: PropTypes.object,
 };
 
 AccountDetails.defaultProps = {
-  accountData: {},
+  accountData: {
+    history: [],
+  },
+  match: {
+    params: {},
+  },
 };
 
 export default AccountDetails;

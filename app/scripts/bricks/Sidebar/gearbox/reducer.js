@@ -12,7 +12,9 @@ const initialState = {
   error: null,
   accounts: [],
   deposits: [],
-  account: {},
+  account: {
+    history: [],
+  },
   deposit: null,
 };
 
@@ -59,12 +61,13 @@ const selectAccountFinish = (state, account) => ({
 // Remove data abount selected account
 const clearAccountFinish = (state) => ({
   ...state,
-  account: {},
+  account: {
+    history: [],
+  },
 });
 
 // Retrieve account data from server
 const getAccountDataDone = (state, payload) => {
-  // console.log('payload', payload);
   return {
     ...state,
     error: null,

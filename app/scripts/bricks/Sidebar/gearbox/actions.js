@@ -21,9 +21,8 @@ const getAccountDataPayload = ({
 export const getAccountData = asyncAction('Get account history + main data')(getAccountDataPayload);
 
 export default {
-  getClientAccounts,
   clearClientAccounts,
-
+  getClientAccounts,
   getAccountData,
   selectAccount,
   clearAccount,
