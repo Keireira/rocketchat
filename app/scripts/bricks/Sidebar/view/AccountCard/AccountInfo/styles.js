@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const CartIcon = styled(NavLink)`
+export const IconWrapper = styled(NavLink)`
   display: flex;
 
   position: absolute;
@@ -18,7 +18,7 @@ export const CartIcon = styled(NavLink)`
   }
 `;
 
-export const AccountBalance = styled.div`
+export const AccBalance = styled.div`
   display: block;
   width: 100%;
 
@@ -26,7 +26,7 @@ export const AccountBalance = styled.div`
   margin-top: .8rem;
 `;
 
-export const AccountNumber = styled.div`
+export const AccNumber = styled.div`
   display: block;
   width: 100%;
 

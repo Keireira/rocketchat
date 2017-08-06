@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NegativeVal = styled.div`
+export const Negative = styled.div`
   display: inline-block;
   color: ${({ theme }) => theme.maximum_red(1)};
 
@@ -9,7 +9,7 @@ export const NegativeVal = styled.div`
   }
 `;
 
-export const PositiveVal = styled.div`
+export const Positive = styled.div`
   display: inline-block;
   color: ${({ theme }) => theme.harlequin_green(1)};
 

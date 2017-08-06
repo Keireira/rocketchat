@@ -6,13 +6,13 @@ import { formatUNIXTimestamp } from 'helpers';
 
 import AccountInfo from './AccountInfo';
 import LastOperation from './LastOperation';
-import { SubText, SubAccountInfo, StyledAccountCart } from './styles';
+import { SubText, SubAccountInfo, StyledAccountCard } from './styles';
 
-const AccountCart = (props) => {
+const AccountCard = (props) => {
   const created = formatUNIXTimestamp(props.created, true);
 
   return (
-    <StyledAccountCart>
+    <StyledAccountCard>
       <AccountInfo
         balance={props.balance}
         currency={props.currency}
@@ -35,11 +35,11 @@ const AccountCart = (props) => {
           />
         )}
       </SubAccountInfo>
-    </StyledAccountCart>
+    </StyledAccountCard>
   );
 };
 
-AccountCart.propTypes = {
+AccountCard.propTypes = {
   annual: PropTypes.number,
   balance: PropTypes.number,
   created: PropTypes.number,
@@ -50,7 +50,7 @@ AccountCart.propTypes = {
   isSingle: PropTypes.bool,
 };
 
-AccountCart.defaultProps = {
+AccountCard.defaultProps = {
   annual: 0,
   balance: 0,
   created: 0,
@@ -61,4 +61,4 @@ AccountCart.defaultProps = {
   isSingle: false,
 };
 
-export default AccountCart;
+export default AccountCard;

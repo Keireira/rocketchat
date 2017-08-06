@@ -1,31 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledAccounts } from './styles';
-import AccountCart from '../AccountCart';
+import AccountCard from '../AccountCard';
 
-class Accounts extends React.PureComponent {
-  renderAllAccounts = () => {
-    return this.props.accounts.map((account) => {
-      return (
-        <AccountCart
-          key={account.number}
-          match={this.props.match}
-          selectAccount={this.props.selectAccount}
-          {...account}
-        />
-      );
-    });
-  };
-
-  render() {
-    const allAccounts = this.renderAllAccounts();
-
+const Accounts = ({ accounts, match, ...props }) => {
+  const accountCardsList = accounts.map((account) => {
     return (
-      <StyledAccounts>
-        {allAccounts}
-      </StyledAccounts>
+      <AccountCard
+        selectAccount={props.selectAccount}
+        key={account.number}
+        match={match}
+        {...account}
+      />
     );
-  };
+  });
+
+  return (
+    <StyledAccounts>
+      {accountCardsList}
+    </StyledAccounts>
+  );
 };
 
 Accounts.propTypes = {

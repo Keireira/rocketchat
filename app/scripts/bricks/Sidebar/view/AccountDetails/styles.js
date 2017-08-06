@@ -48,6 +48,9 @@ export const HistoryWrapper = styled.div`
 `;
 
 export const NegativeVal = styled.span`
+  flex-grow: 1;
+  text-align: right;
+  white-space: nowrap;
   color: ${({ theme }) => theme.maximum_red(1)};
 
   &::before {
@@ -57,6 +60,9 @@ export const NegativeVal = styled.span`
 `;
 
 export const PositiveVal = styled.span`
+  flex-grow: 1;
+  text-align: right;
+  white-space: nowrap;
   color: ${({ theme }) => theme.harlequin_green(1)};
 
   &::before {
@@ -73,17 +79,14 @@ export const HiddenNums = styled.sup`
 export const Operation = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   width: 100%;
   color: ${({ theme }) => theme.raisin_black(1)};
 `;
 
 export const Icon = styled.a`
   display: flex;
-
-  position: absolute;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
+  transform: translateX(10px);
 
   padding: 10px;
   transition: all .2s ease-in-out;
@@ -96,8 +99,19 @@ export const Icon = styled.a`
 `;
 
 export const Inner = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const Right = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const Left = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
 `;

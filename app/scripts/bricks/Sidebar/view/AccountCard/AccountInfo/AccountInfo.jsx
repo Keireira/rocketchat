@@ -5,7 +5,7 @@ import locales from 'locales';
 import { formatBalance } from 'helpers';
 
 import { MaximizeIcon, CloseIcon } from 'icons/ux';
-import { StyledAccountInfo, AccountNumber, AccountBalance, CartIcon } from './styles';
+import { StyledAccountInfo, AccNumber, AccBalance, IconWrapper } from './styles';
 
 class AccountInfo extends React.PureComponent {
   expandAccountData = () => {
@@ -24,47 +24,47 @@ class AccountInfo extends React.PureComponent {
   };
 
   render() {
-    const { balance, accountNumber, currency, match } = this.props;
-    const formattedBalance = formatBalance(balance);
+    const { accountNumber, match } = this.props;
+    const showClose = Boolean(this.props.isSingle);
+    const formattedBalance = formatBalance(this.props.balance);
 
     return (
       <StyledAccountInfo>
-        <AccountNumber>{locales.account} № {accountNumber}</AccountNumber>
-        <AccountBalance>{`${formattedBalance} ${currency}`}</AccountBalance>
+        <AccNumber>{locales.account} № {accountNumber}</AccNumber>
+        <AccBalance>{`${formattedBalance} ${this.props.currency}`}</AccBalance>
 
-        {Boolean(this.props.isSingle) === false && (
-          <CartIcon to={`${match.path}${accountNumber}`} onClick={this.expandAccountData}>
+        {(showClose === false) && (
+          <IconWrapper to={`${match.path}${accountNumber}`} onClick={this.expandAccountData}>
             <MaximizeIcon width={18} height={18} />
-          </CartIcon>
+          </IconWrapper>
         )}
 
-        {this.props.isSingle && (
-          <CartIcon to="/chat/accounts/">
+        {(showClose) && (
+          <IconWrapper to="/chat/accounts/">
             <CloseIcon width={15} height={14} />
-          </CartIcon>
+          </IconWrapper>
         )}
-
       </StyledAccountInfo>
     );
   };
 };
 
 AccountInfo.propTypes = {
-  balance: PropTypes.number,
-  currency: PropTypes.string,
   accountNumber: PropTypes.number,
-  match: PropTypes.object,
-  annual: PropTypes.number,
+  currency: PropTypes.string,
+  balance: PropTypes.number,
   created: PropTypes.number,
+  annual: PropTypes.number,
+  match: PropTypes.object,
 };
 
 AccountInfo.defaultProps = {
-  balance: -1,
-  currency: '',
   accountNumber: -1,
-  match: {},
-  annual: -1,
+  currency: '',
+  balance: -1,
   created: -1,
+  annual: -1,
+  match: {},
 };
 
 export default AccountInfo;

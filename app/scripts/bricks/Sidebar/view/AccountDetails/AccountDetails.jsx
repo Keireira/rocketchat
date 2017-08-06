@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import locales from 'locales';
 import { formatUNIXTimestamp, formatBalance } from 'helpers';
 
-import AccountCart from '../AccountCart';
+import AccountCard from '../AccountCard';
 import { MingleShareicon } from 'icons/ux';
 import {
   StyledAccountDetails,
   Time,
   Icon,
   Inner,
+  Left,
+  Right,
   Operation,
   HistoryTitle,
   HistoryCart,
@@ -49,7 +51,7 @@ class AccountDetails extends React.PureComponent {
 
     return (
       <StyledAccountDetails>
-        <AccountCart
+        <AccountCard
           isSingle={true}
           match={this.props.match}
           {...this.props.accountData}
@@ -69,17 +71,22 @@ class AccountDetails extends React.PureComponent {
               return (
                 <HistoryCart key={item.carried_out / item.last_cart_number}>
                   <Inner>
-                    <Time>{time}</Time>
-                    <Operation>
-                      <span>{locales.actions[item.type]}</span>
-                      <HiddenNums>****</HiddenNums>
-                      <span>{item.last_cart_number}</span>
-                      {amount}
-                    </Operation>
+                    <Left>
+                      <Time>{time}</Time>
+                      <Operation>
+                        <span>{locales.actions[item.type]}</span>
+                        <HiddenNums>****</HiddenNums>
+                        <span>{item.last_cart_number}</span>
+                      </Operation>
+                    </Left>
 
-                    <Icon>
-                      <MingleShareicon width={16} height={16} />
-                    </Icon>
+                    <Right>
+                      {amount}
+
+                      <Icon>
+                        <MingleShareicon width={16} height={16} />
+                      </Icon>
+                    </Right>
                   </Inner>
                 </HistoryCart>
               );
