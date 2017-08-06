@@ -38,6 +38,7 @@ class Sidebar extends React.PureComponent {
   renderAccountDetails = ({ match }) => {
     return (
       <AccountDetails
+        getAccountData={this.props.getAccountData}
         clearAccount={this.props.clearAccount}
         accountData={this.props.account}
         match={match}

@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import selectors from 'selectors';
 import {
-  getClientAccounts,
   clearClientAccounts,
+  getClientAccounts,
+  getAccountData,
   selectAccount,
   clearAccount,
 } from './gearbox/actions';
@@ -37,6 +38,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearAccount() {
     dispatch(clearAccount['START']());
+  },
+  getAccountData({ clientId, productId, getAccount }) {
+    dispatch(getAccountData['INIT'](clientId, productId, getAccount));
   },
 });
 

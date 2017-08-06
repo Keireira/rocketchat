@@ -5,21 +5,24 @@ import AccountCart from '../AccountCart';
 import { StyledAccountDetails } from './styles';
 
 class AccountDetails extends React.PureComponent {
-  // state = {
-  //   productId: 0,
-  // };
-
   componentWillMount() {
-    // const { params } = this.props.match;
-    //
-    // this.setState({
-    //   productId: parseInt(params.productId, 10),
-    // });
+    const { accountData, match } = this.props;
+
+    const numberFromProps = accountData.number;
+    const numberFromURL = parseInt(match.params.productId, 10);
+    const noData = (numberFromURL !== numberFromProps);
+
+    if (typeof this.props.getAccountData === 'function') {
+      this.props.getAccountData({
+        productId: numberFromURL,
+        getAccount: noData,
+        clientId: 888,
+      });
+    }
   };
 
   componentDidMount() {
-    console.log(this.props.accountData);
-    // console.log(this.state);
+
   };
 
   componentWillUnmount() {

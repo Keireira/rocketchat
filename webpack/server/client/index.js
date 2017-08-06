@@ -3,12 +3,13 @@ const accounts = require('./accounts');
 const deposits = require('./deposits');
 
 const client = (req, res, next) => {
-  const { client_id, product_id } = req.body;
+  const { client_id, product_id, get_account } = req.body;
 
   switch (req.params.type) {
     case 'account': return account(res, {
       client_id: parseInt(client_id),
       product_id: parseInt(product_id),
+      get_account: (String(get_account) === 'true'),
     });
 
     case 'accounts': return accounts(res, {

@@ -27,13 +27,21 @@ response example:
 
 `POST /api/client/account`
 params:
-  client_id<Integer>: # ID клиента
+  client_id<Integer>:  # ID клиента
   product_id<Integer>: # Номер продукта (счёт, вклад)  
+  get_account<Boolean> # Нужно ли предоставить данные о счёте
 
 response example:
 ```
 {
-  "account": [
+  "account": {
+    "annual": 6.13,
+    "balance": 111995.18,
+    "created": 1505452859,
+    "number": 57891959,
+    "currency": "€"
+  },
+  "history": [
     {
       "amount": 6481.33,
       "carried_out": 1502672968,
