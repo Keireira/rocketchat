@@ -5,17 +5,16 @@ export const CartIcon = styled(NavLink)`
   display: flex;
 
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: -10px;
+  top: -10px;
 
-  transition: all .15s ease-in-out;
-  border: 1px solid transparent;
-  padding: 4px;
+  padding: 10px;
+  transition: all .2s ease-in-out;
+  border-radius: 50%;
 
   &:hover {
     cursor: pointer;
-    border-color: ${({ theme }) => theme.spanish_gray(1)};
-    background-color: ${({ theme }) => theme.white(1)};
+    background-color: ${({ theme }) => theme.gainsboro(1)};
   }
 `;
 

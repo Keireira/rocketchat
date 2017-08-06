@@ -23,26 +23,30 @@ class Sidebar extends React.PureComponent {
 
   renderAccounts = ({ match }) => {
     return (
-      <Accounts accounts={this.props.accounts} match={match} />
+      <Accounts
+        selectAccount={this.props.selectAccount}
+        accounts={this.props.accounts}
+        match={match}
+      />
     );
   };
 
   renderDeposits = () => {
-    return (
-      <Deposits deposits={this.props.deposits} />
-    );
+    return <Deposits deposits={this.props.deposits} />;
   };
 
-  renderAccountDetails = () => {
+  renderAccountDetails = ({ match }) => {
     return (
-      <AccountDetails />
+      <AccountDetails
+        clearAccount={this.props.clearAccount}
+        accountData={this.props.account}
+        match={match}
+      />
     );
   };
 
   renderDepositDetails = () => {
-    return (
-      <DepositDetails />
-    );
+    return <DepositDetails />;
   };
 
   render() {
@@ -72,11 +76,13 @@ class Sidebar extends React.PureComponent {
 Sidebar.propTypes = {
   accounts: PropTypes.array,
   deposits: PropTypes.array,
+  account: PropTypes.object,
 };
 
 Sidebar.defaultProps = {
   accounts: [],
   deposits: [],
+  account: {},
 };
 
 export default Sidebar;

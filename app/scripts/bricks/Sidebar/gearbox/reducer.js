@@ -1,11 +1,18 @@
 import { createReducer } from 'redux-act';
-import { getClientAccounts, clearClientAccounts } from './actions';
+import {
+  getClientAccounts,
+  clearClientAccounts,
+  selectAccount,
+  clearAccount,
+} from './actions';
 
 const initialState = {
   isFetching: false,
   error: null,
   accounts: [],
   deposits: [],
+  account: {},
+  deposit: null,
 };
 
 const getClientAccountsDone = (state, { accounts }) => ({
@@ -39,6 +46,16 @@ const clearClientAccountsFinish = (state) => ({
   accounts: [],
 });
 
+const selectAccountFinish = (state, account) => ({
+  ...state,
+  account,
+});
+
+const clearAccountFinish = (state) => ({
+  ...state,
+  account: {},
+});
+
 const reducer = createReducer({
   [getClientAccounts['INIT']]: getClientAccountsInit,
   [getClientAccounts['DONE']]: getClientAccountsDone,
@@ -46,6 +63,9 @@ const reducer = createReducer({
   [getClientAccounts['NOT_MODIFIED']]: getClientAccounts304,
 
   [clearClientAccounts['FINISH']]: clearClientAccountsFinish,
+
+  [selectAccount['FINISH']]: selectAccountFinish,
+  [clearAccount['FINISH']]: clearAccountFinish,
 }, initialState);
 
 export default reducer;

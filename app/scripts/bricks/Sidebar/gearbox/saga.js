@@ -1,8 +1,13 @@
 import api from 'api';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { getClientAccounts, clearClientAccounts } from './actions';
+import {
+  getClientAccounts,
+  clearClientAccounts,
+  selectAccount,
+  clearAccount,
+} from './actions';
 
-function* getClientAccountsData(action) {
+function* getClientAccountsSaga(action) {
   const { clientId } = action.payload;
 
   try {
@@ -18,13 +23,26 @@ function* getClientAccountsData(action) {
   }
 };
 
-function* clearClientAccountsData() {
+function* clearClientAccountsSaga() {
   yield put(clearClientAccounts['FINISH']());
 };
 
+
+function* selectAccountSaga(action) {
+  yield put(selectAccount['FINISH'](action.payload));
+};
+
+function* clearAccountSaga() {
+  yield put(clearAccount['FINISH']());
+};
+
+
 export default function* watchCarousel() {
   yield all([
-    takeLatest([getClientAccounts['INIT']], getClientAccountsData),
-    takeLatest([clearClientAccounts['START']], clearClientAccountsData),
+    takeLatest([getClientAccounts['INIT']], getClientAccountsSaga),
+    takeLatest([clearClientAccounts['START']], clearClientAccountsSaga),
+
+    takeLatest([selectAccount['START']], selectAccountSaga),
+    takeLatest([clearAccount['START']], clearAccountSaga),
   ]);
 };

@@ -14,6 +14,7 @@ export const SubAccountInfo = styled.div`
 `;
 
 export const StyledAccountCart = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
 

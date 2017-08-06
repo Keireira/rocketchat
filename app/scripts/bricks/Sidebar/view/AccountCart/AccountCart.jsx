@@ -18,13 +18,17 @@ const AccountCart = (props) => {
         currency={props.currency}
         accountNumber={props.number}
         match={props.match}
+        created={props.created}
+        annual={props.annual}
+        selectAccount={props.selectAccount}
+        isSingle={props.isSingle}
       />
 
       <SubAccountInfo>
         <SubText>{props.annual}% {locales.annual}</SubText>
         <SubText>{locales.created}: {created}</SubText>
 
-        { props.showLastOperation && (
+        { (Boolean(props.isSingle) === false) && (
           <LastOperation
             currency={props.currency}
             operation={props.last_operation}
@@ -43,18 +47,18 @@ AccountCart.propTypes = {
   last_operation: PropTypes.object,
   number: PropTypes.number,
   match: PropTypes.object,
-  showLastOperation: PropTypes.bool,
+  isSingle: PropTypes.bool,
 };
 
 AccountCart.defaultProps = {
-  annual: -1,
-  balance: -1,
-  created: -1,
+  annual: 0,
+  balance: 0,
+  created: 0,
   currency: '',
   last_operation: {},
-  number: -1,
+  number: 0,
   match: {},
-  showLastOperation: true,
+  isSingle: false,
 };
 
 export default AccountCart;

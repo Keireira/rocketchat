@@ -7,7 +7,12 @@ class Accounts extends React.PureComponent {
   renderAllAccounts = () => {
     return this.props.accounts.map((account) => {
       return (
-        <AccountCart key={account.number} match={this.props.match} {...account} />
+        <AccountCart
+          key={account.number}
+          match={this.props.match}
+          selectAccount={this.props.selectAccount}
+          {...account}
+        />
       );
     });
   };
@@ -26,6 +31,7 @@ class Accounts extends React.PureComponent {
 Accounts.propTypes = {
   accounts: PropTypes.array,
   match: PropTypes.object,
+  selectAccount: PropTypes.func.isRequired,
 };
 
 Accounts.defaultProps = {
