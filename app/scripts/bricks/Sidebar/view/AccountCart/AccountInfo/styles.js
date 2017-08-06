@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const CartIcon = styled.a`
+export const CartIcon = styled(NavLink)`
   display: flex;
 
   position: absolute;

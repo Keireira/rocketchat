@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import locales from 'locales';
 import { formatBalance, formatUNIXTimestamp } from 'helpers';
 
@@ -16,6 +18,16 @@ const LastOperation = ({ operation, currency }) => {
   return (
     <SubText>{locales.last_operation}: {carriedOut} ({total})</SubText>
   );
+};
+
+LastOperation.propTypes = {
+  currency: PropTypes.string,
+  operation: PropTypes.object,
+};
+
+LastOperation.defaultProps = {
+  currency: '',
+  operation: {},
 };
 
 export default LastOperation;

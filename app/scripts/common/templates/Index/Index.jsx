@@ -8,7 +8,7 @@ const Index = (props) => {
     <IndexTemplate>
       {props.children}
 
-      <Sidebar />
+      <Sidebar location={props.location} match={props.match} />
     </IndexTemplate>
   );
 };

@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import locales from 'locales';
+import AccountDetails from './AccountDetails';
+import DepositDetails from './DepositDetails';
 import Accounts from './Accounts';
+import Deposits from './Deposits';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { Tab, Tabs, Content, StyledSidebar } from './styles';
 
 class Sidebar extends React.PureComponent {
@@ -17,16 +21,48 @@ class Sidebar extends React.PureComponent {
     }
   };
 
+  renderAccounts = ({ match }) => {
+    return (
+      <Accounts accounts={this.props.accounts} match={match} />
+    );
+  };
+
+  renderDeposits = () => {
+    return (
+      <Deposits deposits={this.props.deposits} />
+    );
+  };
+
+  renderAccountDetails = () => {
+    return (
+      <AccountDetails />
+    );
+  };
+
+  renderDepositDetails = () => {
+    return (
+      <DepositDetails />
+    );
+  };
+
   render() {
     return (
       <StyledSidebar>
         <Tabs>
-          <Tab isActive>{locales.accounts}</Tab>
-          <Tab>{locales.deposits}</Tab>
+          <Tab to="/chat/accounts/">{locales.accounts}</Tab>
+          <Tab to="/chat/deposits/">{locales.deposits}</Tab>
         </Tabs>
 
         <Content>
-          <Accounts accounts={this.props.accounts} />
+          <Switch>
+            <Route path="/chat/accounts/:productId" render={this.renderAccountDetails} />
+            <Route path="/chat/accounts/" render={this.renderAccounts} />
+
+            <Route path="/chat/deposits/:productId" render={this.renderDepositDetails} />
+            <Route path="/chat/deposits/" render={this.renderDeposits} />
+
+            <Redirect from="*" to="/" />
+          </Switch>
         </Content>
       </StyledSidebar>
     );
@@ -35,10 +71,12 @@ class Sidebar extends React.PureComponent {
 
 Sidebar.propTypes = {
   accounts: PropTypes.array,
+  deposits: PropTypes.array,
 };
 
 Sidebar.defaultProps = {
   accounts: [],
+  deposits: [],
 };
 
 export default Sidebar;
