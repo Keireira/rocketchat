@@ -14,14 +14,14 @@ const AccountCard = (props) => {
   return (
     <StyledAccountCard>
       <AccountInfo
-        balance={props.balance}
-        currency={props.currency}
+        selectAccount={props.selectAccount}
         accountNumber={props.number}
-        match={props.match}
+        currency={props.currency}
+        isSingle={props.isSingle}
+        balance={props.balance}
         created={props.created}
         annual={props.annual}
-        selectAccount={props.selectAccount}
-        isSingle={props.isSingle}
+        match={props.match}
       />
 
       <SubAccountInfo>

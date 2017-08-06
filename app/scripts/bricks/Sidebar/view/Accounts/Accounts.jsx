@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledAccounts } from './styles';
+
 import AccountCard from '../AccountCard';
+import { StyledAccounts } from './styles';
 
 const Accounts = ({ accounts, match, ...props }) => {
   const accountCardsList = accounts.map((account) => {
@@ -25,7 +26,6 @@ const Accounts = ({ accounts, match, ...props }) => {
 Accounts.propTypes = {
   accounts: PropTypes.array,
   match: PropTypes.object,
-  selectAccount: PropTypes.func.isRequired,
 };
 
 Accounts.defaultProps = {

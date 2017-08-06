@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route, Redirect, Switch } from 'react-router-dom';
+
 import locales from 'locales';
-import AccountDetails from './AccountDetails';
-import DepositDetails from './DepositDetails';
+
 import Accounts from './Accounts';
 import Deposits from './Deposits';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import { Tab, Tabs, Content, StyledSidebar, Helper } from './styles';
+import AccountDetails from './AccountDetails';
+import DepositDetails from './DepositDetails';
+import { Tab, Tabs, Content, StyledSidebar, ContentWrapper } from './styles';
 
 class Sidebar extends React.PureComponent {
   componentDidMount() {
@@ -31,10 +33,6 @@ class Sidebar extends React.PureComponent {
     );
   };
 
-  renderDeposits = () => {
-    return <Deposits deposits={this.props.deposits} />;
-  };
-
   renderAccountDetails = ({ match }) => {
     return (
       <AccountDetails
@@ -46,6 +44,10 @@ class Sidebar extends React.PureComponent {
     );
   };
 
+  renderDeposits = () => {
+    return <Deposits deposits={this.props.deposits} />;
+  };
+
   renderDepositDetails = () => {
     return <DepositDetails />;
   };
@@ -53,7 +55,7 @@ class Sidebar extends React.PureComponent {
   render() {
     return (
       <StyledSidebar>
-        <Helper>
+        <ContentWrapper>
           <Tabs>
             <Tab to="/chat/accounts/">{locales.accounts}</Tab>
             <Tab to="/chat/deposits/">{locales.deposits}</Tab>
@@ -70,7 +72,7 @@ class Sidebar extends React.PureComponent {
               <Redirect from="*" to="/" />
             </Switch>
           </Content>
-        </Helper>
+        </ContentWrapper>
       </StyledSidebar>
     );
   };

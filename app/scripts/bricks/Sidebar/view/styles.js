@@ -10,14 +10,14 @@ export const Tab = styled(NavLink).attrs({
   align-items: center;
   justify-content: center;
 
-  font-family: 'roboto-regular';
   font-size: 1.25rem;
   line-height: 1.25rem;
-  padding: .875rem 0;
+  font-family: 'roboto-regular';
   color: ${({ theme }) => theme.blue_jeans(1)};
-  background-color: $${({ theme }) => theme.white(1)};
 
+  padding: .875rem 0;
   transition: all .25s ease-in-out;
+  background-color: $${({ theme }) => theme.white(1)};
 
   &.selectedTab {
     color: ${({ theme }) => theme.white(1)};
@@ -33,24 +33,27 @@ export const Tab = styled(NavLink).attrs({
 `;
 
 export const Tabs = styled.div`
-  width: calc(100% - 200px);
-  min-height: 47px;
   height: 47px;
+  min-height: 47px;
+  width: calc(100% - 200px);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: .25rem;
+
   overflow: hidden;
+  border-radius: .25rem;
   border: 1px solid ${({ theme }) => theme.blue_jeans(1)};
 `;
 
 export const Content = styled.div`
-  width: calc(100% - 120px);
-  margin-top: 2.5rem;
   height: 100%;
+  width: calc(100% - 120px);
+
   display: flex;
   flex-direction: column;
+
+  margin-top: 2.5rem;
 
   ${media.beta`
     margin-top: 2rem;
@@ -59,8 +62,8 @@ export const Content = styled.div`
 
 export const StyledSidebar = styled.div`
   width: 38%;
-  min-width: 543px;
   height: 100vh;
+  min-width: 543px;
 
   padding: 110px;
   background-color: ${({ theme }) => theme.white(1)};
@@ -71,12 +74,12 @@ export const StyledSidebar = styled.div`
   `}
 `;
 
-export const Helper = styled.div`
+export const ContentWrapper = styled.div`
   width: 100%;
   height: 100%;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
 `;
