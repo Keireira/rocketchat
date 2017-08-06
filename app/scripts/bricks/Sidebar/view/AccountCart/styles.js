@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const SubText = styled.span`
-  display: flex;
-
+export const SubText = styled.div`
+  display: block;
+  width: 100%;
   font-size: .875rem;
   color: ${({ theme }) => theme.spanish_gray(1)};
 
@@ -15,8 +15,6 @@ export const SubAccountInfo = styled.div`
 
 export const StyledAccountCart = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
 
   font-family: 'roboto-regular';
   line-height: 1.25rem;

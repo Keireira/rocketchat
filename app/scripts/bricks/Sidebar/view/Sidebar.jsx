@@ -6,7 +6,7 @@ import DepositDetails from './DepositDetails';
 import Accounts from './Accounts';
 import Deposits from './Deposits';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import { Tab, Tabs, Content, StyledSidebar } from './styles';
+import { Tab, Tabs, Content, StyledSidebar, Helper } from './styles';
 
 class Sidebar extends React.PureComponent {
   componentDidMount() {
@@ -53,22 +53,24 @@ class Sidebar extends React.PureComponent {
   render() {
     return (
       <StyledSidebar>
-        <Tabs>
-          <Tab to="/chat/accounts/">{locales.accounts}</Tab>
-          <Tab to="/chat/deposits/">{locales.deposits}</Tab>
-        </Tabs>
+        <Helper>
+          <Tabs>
+            <Tab to="/chat/accounts/">{locales.accounts}</Tab>
+            <Tab to="/chat/deposits/">{locales.deposits}</Tab>
+          </Tabs>
 
-        <Content>
-          <Switch>
-            <Route path="/chat/accounts/:productId" render={this.renderAccountDetails} />
-            <Route path="/chat/accounts/" render={this.renderAccounts} />
+          <Content>
+            <Switch>
+              <Route path="/chat/accounts/:productId" render={this.renderAccountDetails} />
+              <Route path="/chat/accounts/" render={this.renderAccounts} />
 
-            <Route path="/chat/deposits/:productId" render={this.renderDepositDetails} />
-            <Route path="/chat/deposits/" render={this.renderDeposits} />
+              <Route path="/chat/deposits/:productId" render={this.renderDepositDetails} />
+              <Route path="/chat/deposits/" render={this.renderDeposits} />
 
-            <Redirect from="*" to="/" />
-          </Switch>
-        </Content>
+              <Redirect from="*" to="/" />
+            </Switch>
+          </Content>
+        </Helper>
       </StyledSidebar>
     );
   };

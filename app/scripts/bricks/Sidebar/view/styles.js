@@ -1,4 +1,5 @@
 import styled, { injectGlobal } from 'styled-components';
+import { media } from 'styles/utils';
 import { NavLink } from 'react-router-dom';
 
 export const Tab = styled(NavLink).attrs({
@@ -12,7 +13,7 @@ export const Tab = styled(NavLink).attrs({
   font-family: 'roboto-regular';
   font-size: 1.25rem;
   line-height: 1.25rem;
-  height: 100%;
+  padding: .875rem 0;
   color: ${({ theme }) => theme.blue_jeans(1)};
   background-color: $${({ theme }) => theme.white(1)};
 
@@ -46,9 +47,14 @@ export const Tabs = styled.div`
 
 export const Content = styled.div`
   width: calc(100% - 120px);
-  height: 100vh;
   margin-top: 2.5rem;
-  overflow-y: scroll;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  ${media.beta`
+    margin-top: 2rem;
+  `}
 `;
 
 export const StyledSidebar = styled.div`
@@ -56,9 +62,18 @@ export const StyledSidebar = styled.div`
   min-width: 543px;
   height: 100vh;
 
-  padding: 110px 0 55px;
+  padding: 110px;
   background-color: ${({ theme }) => theme.white(1)};
   border-left: 1px solid ${({ theme }) => theme.light_platinum(1)};
+
+  ${media.beta`
+    padding: 55px 0;
+  `}
+`;
+
+export const Helper = styled.div`
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;

@@ -18,15 +18,17 @@ export const CartIcon = styled(NavLink)`
   }
 `;
 
-export const AccountBalance = styled.span`
-  display: flex;
+export const AccountBalance = styled.div`
+  display: block;
+  width: 100%;
 
   font-size: 1.5rem;
   margin-top: .8rem;
 `;
 
-export const AccountNumber = styled.span`
-  display: flex;
+export const AccountNumber = styled.div`
+  display: block;
+  width: 100%;
 
   font-size: 1.25rem;
 `;
