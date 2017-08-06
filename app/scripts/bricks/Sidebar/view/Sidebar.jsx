@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import locales from 'locales';
 import Accounts from './Accounts';
+import Deposits from './Deposits';
 import { Route } from 'react-router-dom';
 import { Tab, Tabs, Content, StyledSidebar } from './styles';
 
@@ -24,6 +25,12 @@ class Sidebar extends React.PureComponent {
     );
   };
 
+  renderDeposits = () => {
+    return (
+      <Deposits deposits={this.props.deposits} />
+    );
+  };
+
   render() {
     return (
       <StyledSidebar>
@@ -34,6 +41,7 @@ class Sidebar extends React.PureComponent {
 
         <Content>
           <Route path="/chat/accounts" render={this.renderAccounts} />
+          <Route path="/chat/deposits" render={this.renderDeposits} />
         </Content>
       </StyledSidebar>
     );
@@ -42,10 +50,12 @@ class Sidebar extends React.PureComponent {
 
 Sidebar.propTypes = {
   accounts: PropTypes.array,
+  deposits: PropTypes.array,
 };
 
 Sidebar.defaultProps = {
   accounts: [],
+  deposits: [],
 };
 
 export default Sidebar;
