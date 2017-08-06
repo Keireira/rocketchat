@@ -15,6 +15,7 @@ const AccountCart = (props) => {
         balance={props.balance}
         currency={props.currency}
         accountNumber={props.number}
+        match={props.match}
       />
 
       <SubAccountInfo>
