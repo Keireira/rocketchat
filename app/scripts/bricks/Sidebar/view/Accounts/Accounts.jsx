@@ -25,10 +25,12 @@ class Accounts extends React.PureComponent {
 
 Accounts.propTypes = {
   accounts: PropTypes.array,
+  match: PropTypes.object,
 };
 
 Accounts.defaultProps = {
   accounts: [],
+  match: {},
 };
 
 export default Accounts;

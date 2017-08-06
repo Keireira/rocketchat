@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import locales from 'locales';
 import { formatBalance } from 'helpers';
 
@@ -18,6 +20,20 @@ const AccountInfo = ({ balance, currency, accountNumber, match }) => {
       </CartIcon>
     </StyledAccountInfo>
   );
+};
+
+AccountInfo.propTypes = {
+  balance: PropTypes.number,
+  currency: PropTypes.string,
+  accountNumber: PropTypes.number,
+  match: PropTypes.object,
+};
+
+AccountInfo.defaultProps = {
+  balance: -1,
+  currency: '',
+  accountNumber: -1,
+  match: {},
 };
 
 export default AccountInfo;
