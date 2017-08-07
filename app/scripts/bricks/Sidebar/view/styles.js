@@ -65,9 +65,10 @@ export const StyledSidebar = styled.div`
   height: 100vh;
   min-width: 543px;
 
-  padding: 110px;
+  padding: 110px 0;
   background-color: ${({ theme }) => theme.white(1)};
   border-left: 1px solid ${({ theme }) => theme.light_platinum(1)};
+  border-right: 1px solid ${({ theme }) => theme.light_platinum(1)};
 
   ${media.beta`
     padding: 55px 0;

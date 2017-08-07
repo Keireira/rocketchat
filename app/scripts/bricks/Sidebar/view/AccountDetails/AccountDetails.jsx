@@ -2,25 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import locales from 'locales';
-import { formatUNIXTimestamp, formatBalance } from 'helpers';
 
+import HistoryCard from './HistoryCard';
 import AccountCard from '../AccountCard';
-import { MingleShareicon } from 'icons/ux';
-import {
-  StyledAccountDetails,
-  Time,
-  Icon,
-  Inner,
-  Left,
-  Right,
-  Operation,
-  HistoryTitle,
-  HistoryCart,
-  HiddenNums,
-  HistoryWrapper,
-  NegativeVal,
-  PositiveVal,
-} from './styles';
+import { StyledAccountDetails, HistoryTitle, HistoryWrapper } from './styles';
 
 class AccountDetails extends React.PureComponent {
   componentWillMount() {
@@ -44,54 +29,41 @@ class AccountDetails extends React.PureComponent {
     }
   };
 
-  render() {
-    const history = this.props.accountData.history.sort((a, b) => {
-      return (a.carried_out >= b.carried_out) ? -1 : 1;
+  sortHistoryData = () => {
+    const { history } = this.props.accountData;
+
+    return (history) ? history.sort((a, b) => {
+      return (a.carriedOut >= b.carriedOut) ? -1 : 1;
+    }) : [];
+  };
+
+  createHistoryCardsList = () => {
+    const history = this.sortHistoryData();
+
+    return history.map((item) => {
+      return (
+        <HistoryCard
+          key={item.carriedOut}
+          currency={this.props.accountData.currency}
+          {...item}
+        />
+      );
     });
+  };
+
+  render() {
+    const historyCardsList = this.createHistoryCardsList();
 
     return (
       <StyledAccountDetails>
-        <AccountCard
-          isSingle={true}
-          match={this.props.match}
-          {...this.props.accountData}
-        />
+        <AccountCard isSingle match={this.props.match} {...this.props.accountData} />
 
-        <HistoryTitle>{locales.operations_history}</HistoryTitle>
+        <HistoryTitle>
+          {locales.operations_history}
+        </HistoryTitle>
+
         <HistoryWrapper>
-          {
-            history.map((item) => {
-              const time = formatUNIXTimestamp(item.carried_out, true);
-              const formattedAmouunt = formatBalance(item.amount);
-              const { currency } = this.props.accountData;
-              const amount = (item.positive)
-                ? <PositiveVal>{`${formattedAmouunt} ${currency}`}</PositiveVal>
-                : <NegativeVal>{`${formattedAmouunt} ${currency}`}</NegativeVal>;
-
-              return (
-                <HistoryCart key={item.carried_out / item.last_cart_number}>
-                  <Inner>
-                    <Left>
-                      <Time>{time}</Time>
-                      <Operation>
-                        <span>{locales.actions[item.type]}</span>
-                        <HiddenNums>****</HiddenNums>
-                        <span>{item.last_cart_number}</span>
-                      </Operation>
-                    </Left>
-
-                    <Right>
-                      {amount}
-
-                      <Icon>
-                        <MingleShareicon width={16} height={16} />
-                      </Icon>
-                    </Right>
-                  </Inner>
-                </HistoryCart>
-              );
-            })
-          }
+          {historyCardsList}
         </HistoryWrapper>
       </StyledAccountDetails>
     );

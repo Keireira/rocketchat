@@ -12,7 +12,7 @@ const getLastAmount = (type, text) => (type) ? <Positive>{text}</Positive> : <Ne
 // Render
 const LastOperation = ({ operation, currency }) => {
   const amount = formatBalance(operation.amount);
-  const carriedOut = formatUNIXTimestamp(operation.carried_out, true);
+  const carriedOut = formatUNIXTimestamp(operation.carriedOut, true);
   const lastAmount = getLastAmount(operation.positive, `${amount} ${currency}`);
 
   return (

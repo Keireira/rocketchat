@@ -24,7 +24,7 @@ const makeStubs = () => {
     const currency = currencySymbols[random(0, 2)];
 
     // last operation
-    const carried_out = random(created, created + random(20000, 333333));
+    const carriedOut = random(created, created + random(20000, 333333));
     const amount = random(10.00, 20000.99).toFixed(2);
     const type = operationTypes[random(0, 2)];
 
@@ -36,7 +36,7 @@ const makeStubs = () => {
       currency,
       last_operation: {
         amount: parseFloat(amount),
-        carried_out: parseInt(carried_out),
+        carriedOut: parseInt(carriedOut),
         positive: type.positive,
         type: type.name,
       },

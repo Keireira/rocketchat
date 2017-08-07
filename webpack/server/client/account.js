@@ -36,15 +36,15 @@ const makeHistoryStubs = () => {
     const created = random(1500000000, 1505555555);
 
     // last operation
-    const carried_out = random(created, created + random(20000, 333333));
-    const last_cart_number = random(1111, 9999);
+    const carriedOut = random(created, created + random(20000, 333333));
+    const lastCartNumber = random(1111, 9999);
     const amount = random(10.00, 20000.99).toFixed(2);
     const type = operationTypes[random(0, 2)];
 
     return {
       amount: parseFloat(amount),
-      carried_out: parseInt(carried_out),
-      last_cart_number: parseInt(last_cart_number),
+      carriedOut: parseInt(carriedOut),
+      lastCartNumber: String(lastCartNumber),
       positive: type.positive,
       type: type.name,
     };
