@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { StyledLoginPage, ChatNotify } from './styles';
+import locales from 'locales';
+
+import { StyledLoginPage, ChatNotify, ChatCaption } from './styles';
 
 const LoginPage = () => {
   return (
@@ -8,6 +10,10 @@ const LoginPage = () => {
       <ChatNotify to="/chat/accounts/">
         !
       </ChatNotify>
+
+      <ChatCaption>
+        {locales.select_chat}
+      </ChatCaption>
     </StyledLoginPage>
   );
 };

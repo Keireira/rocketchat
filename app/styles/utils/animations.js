@@ -7,7 +7,7 @@ export const scale = keyframes`
 
   100% {
     ${'' /* Rotate is hack for IE && FF */}
-    transform: scale(1.1) rotate(0.02deg);
+    transform: scale(1.025) rotate(0.02deg);
   }
 `;
 

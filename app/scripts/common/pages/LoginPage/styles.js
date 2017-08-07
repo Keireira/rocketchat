@@ -7,9 +7,30 @@ export const StyledLoginPage = styled.div`
   height: 100%;
   max-width: 1440px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: relative;
 
   background-color: ${({ theme }) => theme.white_smoke(1)};
+`;
+
+export const ChatCaption = styled.div`
+  font-family: 'roboto-regular';
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 8rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  user-select: none;
+  cursor: default;
+
+  color: ${({ theme }) => theme.white_smoke(1)};
+  background-color: ${({ theme }) => theme.white(1)};
+
+  text-shadow: 1px 1px 1px ${({ theme }) => theme.spanish_gray(1)};
+  box-shadow: inset 1px 1px 1px ${({ theme }) => theme.spanish_gray(1)};
 `;
 
 export const ChatNotify = styled(Link)`
