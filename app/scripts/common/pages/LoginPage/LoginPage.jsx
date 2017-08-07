@@ -5,31 +5,61 @@ import locales from 'locales';
 
 import { StyledLoginPage, ChatNotify, ChatCaption, Accent, ClientCounts } from './styles';
 
-const io = socket();
+class LoginPage extends React.PureComponent {
+  constructor() {
+    super();
 
-io.on('connected', (data) => {
-  console.log(data);
-});
+    this.socket = null;
+    this.state = {
+      clients: [],
+    };
+  };
 
-io.on('new_client', (data) => {
-  console.log(data);
-});
+  componentWillMount() {
+    this.initSocketConnection();
+  };
 
-// io.disconnect();
+  componentWillUnmount() {
+    this.destroySocketConnection();
+  };
 
-const LoginPage = () => {
-  return (
-    <StyledLoginPage>
-      <ChatNotify to="/chat/accounts/">
-        <Accent>!</Accent>
-        <ClientCounts>99</ClientCounts>
-      </ChatNotify>
+  initSocketConnection = () => {
+    this.socket = socket();
 
-      <ChatCaption>
-        {locales.select_chat}
-      </ChatCaption>
-    </StyledLoginPage>
-  );
+    this.socket.on('connect', () => {
+      this.socket.emit('get_clients_init');
+    });
+
+    this.socket.on('get_clients', ({ clients }) => {
+      this.setState({ clients });
+    });
+
+    this.socket.on('new_client', ({ client }) => {
+      this.setState((prevState) => ({
+        clients: prevState.clients.concat([client]),
+      }));
+    });
+  };
+
+  destroySocketConnection = () => {
+    this.socket.disconnect();
+    this.socket = null;
+  };
+
+  render() {
+    return (
+      <StyledLoginPage>
+        <ChatNotify to="/chat/">
+          <Accent>!</Accent>
+          {this.state.clients.length > 0 && <ClientCounts>{this.state.clients.length}</ClientCounts> }
+        </ChatNotify>
+
+        <ChatCaption>
+          {locales.select_chat}
+        </ChatCaption>
+      </StyledLoginPage>
+    );
+  };
 };
 
 export default LoginPage;

@@ -1,20 +1,21 @@
-const http = require('http');
-const socket = require('socket.io');
+const socketIo = require('socket.io');
 const clientsCtrl = require('./controllers/clients.controller');
 
-const startServer = ({ app }) => {
-  const server = http.createServer(app);
-  const io = socket(server);
+const startServer = ({ app, server }) => {
+  const io = socketIo.listen(server);
 
   io.on('connect', (socket) => {
-    socket.emit('connected', clientsCtrl.getInitClients);
+    socket.on('get_clients_init', () => {
+      // io.sockets.emit('event', data);
+      socket.emit('get_clients', clientsCtrl.getInitClients);
 
-    setTimeout(() => {
-      socket.emit('new_client', clientsCtrl.addNewClient);
-    }, 7000);
+      setTimeout(() => {
+        socket.emit('new_client', clientsCtrl.addNewClient);
+      }, 7000);
+    });
+
+    socket.on('disconnect', () => {});
   });
-
-  server.listen(9002);
 };
 
 module.exports = startServer;

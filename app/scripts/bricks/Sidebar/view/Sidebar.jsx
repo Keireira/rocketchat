@@ -69,7 +69,7 @@ class Sidebar extends React.PureComponent {
               <Route path="/chat/deposits/:productId" render={this.renderDepositDetails} />
               <Route path="/chat/deposits/" render={this.renderDeposits} />
 
-              <Redirect from="*" to="/" />
+              <Redirect from="*" to="/chat/" />
             </Switch>
           </Content>
         </ContentWrapper>

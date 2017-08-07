@@ -1,7 +1,7 @@
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const SocketURL = `${window.location.protocol}//${window.location.hostname}:${9002}`;
+const SocketURL = `${window.location.protocol}//${window.location.hostname}:${9001}`;
 export const socket = () => io.connect(SocketURL);
 
 export const getClientAccounts = (clientId = -1) => {

@@ -33,8 +33,6 @@ const toDeposits = ({ res, req }) => {
 };
 
 const client = (req, res, next) => {
-  const { client_id, product_id, get_account } = req.body;
-
   switch (req.params.type) {
     case 'account': return toAccount({ res, req });
     case 'accounts': return toAccounts({ res, req });

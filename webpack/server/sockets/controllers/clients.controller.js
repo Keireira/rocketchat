@@ -13,7 +13,7 @@ const createClient = () => {
 
 module.exports = {
   getInitClients: ({
-    clients: new Array(random(2, 7)).fill(null).map(createClient),
+    clients: new Array(random(2, 4)).fill(null).map(createClient),
   }),
 
   addNewClient: ({

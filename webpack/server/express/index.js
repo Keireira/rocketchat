@@ -11,9 +11,12 @@ app.use(routes);
 app.use('/api', routes);
 
 const startServer = ({ port }) => {
-  app.listen(port);
+  const server = app.listen(port);
 
-  return app;
+  return {
+    app,
+    server,
+  };
 };
 
 module.exports = startServer;

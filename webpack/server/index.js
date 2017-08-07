@@ -17,11 +17,9 @@ const clearConsole = require('react-dev-utils/clearConsole');
     },
   });
 
-  const expressApp = expressServer({
+  const { app, server } = expressServer({
     port: api.port,
   });
 
-  socketServer({
-    app: expressApp,
-  });
+  socketServer({ app, server });
 })(config);
