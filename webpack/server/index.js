@@ -1,12 +1,13 @@
+const WDS = require('./wds');
 const config = require('./config');
-const frontendServer = require('./wds');
+const socketServer = require('./sockets');
 const expressServer = require('./express');
 const clearConsole = require('react-dev-utils/clearConsole');
 
-(({ front, api, general }) => {
+(({ api, front, general }) => {
   clearConsole();
 
-  frontendServer({
+  WDS({
     port: front.port,
     host: front.host,
     externalIP: general.externalIP,
@@ -16,7 +17,9 @@ const clearConsole = require('react-dev-utils/clearConsole');
     },
   });
 
-  expressServer({
+  const { app, server } = expressServer({
     port: api.port,
   });
+
+  socketServer({ app, server });
 })(config);
