@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Test task for RB",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./webpack/server",
+    "dev": "NODE_ENV=development node ./webpack/server",
     "build": "rm -rf ./build && NODE_ENV=production webpack --progress --optimize-minimize",
     "clean": "rm -rf ./build ./npm-debug.log ./yarn-error.log ./coverage",
     "test": "BABEL_ENV=test jest --bail --colors --coverage",
@@ -82,7 +82,6 @@
     "image-webpack-loader": "^3.3.1",
     "ip": "^1.1.5",
     "jest": "^20.0.4",
-    "nodemon": "^1.11.0",
     "react-dev-utils": "^3.0.2",
     "react-hot-loader": "next",
     "redux-devtools-extension": "^2.13.2",

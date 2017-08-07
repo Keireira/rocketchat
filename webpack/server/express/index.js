@@ -1,19 +1,14 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const client = require('./client');
+const routes = require('./routes');
 
 const app = new express();
-const router = express.Router();
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api', router);
-
-router.route('/client/:type')
-  .post((req, res, next) => client(req, res, next));
+app.use(routes);
+app.use('/api', routes);
 
 const startServer = ({ port }) => {
   app.listen(port);
