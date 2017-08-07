@@ -10,3 +10,7 @@ export const scale = keyframes`
     transform: scale(1.1) rotate(0.02deg);
   }
 `;
+
+export default {
+  scale,
+};

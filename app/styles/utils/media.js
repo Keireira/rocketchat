@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const sizes = {
   alpha: 1440,
-  beta: 1024,
+  beta: 1280,
   gamma: 768,
   delta: 414,
 };

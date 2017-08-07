@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledAccounts = styled.div`
+export const StyledDeposits = styled.div`
   width: 100%;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;

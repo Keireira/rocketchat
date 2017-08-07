@@ -20,8 +20,8 @@ const LoginPage = (props) => (
 
 const renderIndex = (Component, props) => {
   return (
-    <Index>
-      <Component {...props} />
+    <Index {...props}>
+      <Component />
     </Index>
   );
 };
@@ -32,7 +32,7 @@ const AppRouter = ({ ...props }) => {
       <Switch>
         <Route exact path="/" component={LoginPage} />
 
-        <Route path="/chat" render={(props) => renderIndex(Chat, props)} />
+        <Route path="/chat/:type" render={(props) => renderIndex(Chat, props)} />
 
         <Redirect from="*" to="/" />
       </Switch>
