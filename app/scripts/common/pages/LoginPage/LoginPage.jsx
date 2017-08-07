@@ -7,10 +7,15 @@ import { StyledLoginPage, ChatNotify, ChatCaption, Accent, ClientCounts } from '
 
 const io = socket();
 
+io.on('connected', (data) => {
+  console.log(data);
+});
+
 io.on('new_client', (data) => {
   console.log(data);
-  io.emit('client_event', { my: 'data' });
 });
+
+// io.disconnect();
 
 const LoginPage = () => {
   return (
