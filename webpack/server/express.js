@@ -17,6 +17,8 @@ router.route('/client/:type')
 
 const startServer = ({ port }) => {
   app.listen(port);
+
+  return app;
 };
 
 module.exports = startServer;

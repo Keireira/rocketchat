@@ -50,3 +50,9 @@ response example:
   ]
 }
 ```
+
+Объект `USER`:
+  userId: <Integer>
+  isClient: <Boolean>
+  avatarUrl: <String>
+  displayName: <String>

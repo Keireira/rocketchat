@@ -44,16 +44,10 @@ export const ChatCaption = styled.div`
   text-transform: uppercase;
   font-weight: bold;
   font-size: 8rem;
-  padding: 1rem;
-  border-radius: 1rem;
   user-select: none;
   cursor: default;
 
-  color: ${({ theme }) => theme.white_smoke(1)};
-  background-color: ${({ theme }) => theme.white(1)};
-
-  text-shadow: 3px 3px 1px ${({ theme }) => theme.gainsboro(1)};
-  box-shadow: inset 3px 3px 1px ${({ theme }) => theme.gainsboro(1)};
+  color: ${({ theme }) => theme.gainsboro(1)};
 `;
 
 export const ChatNotify = styled(Link)`

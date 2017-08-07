@@ -1,5 +1,6 @@
 const config = require('./config');
 const frontendServer = require('./wds');
+const socketServer = require('./socket');
 const expressServer = require('./express');
 const clearConsole = require('react-dev-utils/clearConsole');
 
@@ -16,7 +17,11 @@ const clearConsole = require('react-dev-utils/clearConsole');
     },
   });
 
-  expressServer({
+  const expressApp = expressServer({
     port: api.port,
+  });
+
+  socketServer({
+    app: expressApp,
   });
 })(config);

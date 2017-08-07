@@ -1,4 +1,8 @@
 import axios from 'axios';
+import io from 'socket.io-client';
+
+const SocketURL = `${window.location.protocol}//${window.location.hostname}:${9002}`;
+export const socket = () => io.connect(SocketURL);
 
 export const getClientAccounts = (clientId = -1) => {
   return axios.post('/api/client/accounts', {
@@ -17,4 +21,5 @@ export const getAccount = ({ clientId = -1, productId = -1, getAccount = false }
 export default {
   getClientAccounts,
   getAccount,
+  socket,
 };
