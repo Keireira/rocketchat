@@ -20,6 +20,9 @@ const colors = {
   spanish_gray: (opacity = 1) =>
     `rgba(153, 153, 153, ${opacity})`, // #999999
 
+  taupe_gray: (opacity = 1) =>
+    `rgba(135, 135, 135, ${opacity})`, // #878787
+
   gainsboro: (opacity = 1) =>
     `rgba(222, 222, 222, ${opacity})`, // #DEDEDE
 

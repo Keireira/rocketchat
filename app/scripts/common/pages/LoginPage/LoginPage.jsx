@@ -1,9 +1,13 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import { socket } from 'api';
 import locales from 'locales';
+import { selectClient } from 'actions/users';
 
-import { StyledLoginPage, ChatNotify, ChatCaption, Accent, ClientCounts } from './styles';
+import ClientInfo from './ClientInfo';
+import { ClientsList, ChatCounter, ChatCaption, ChatNotify, StyledLoginPage } from './styles';
 
 class LoginPage extends React.PureComponent {
   constructor() {
@@ -46,12 +50,23 @@ class LoginPage extends React.PureComponent {
     this.socket = null;
   };
 
+  makeClientsList = () => {
+    return this.state.clients.map((client) => {
+      return <ClientInfo key={client.userId} selectClient={this.props.selectClient} {...client} />;
+    });
+  };
+
   render() {
+    const clientsList = this.makeClientsList();
+
     return (
       <StyledLoginPage>
-        <ChatNotify to="/chat/">
-          <Accent>!</Accent>
-          {this.state.clients.length > 0 && <ClientCounts>{this.state.clients.length}</ClientCounts> }
+        <ChatNotify>
+          <ChatCounter>{this.state.clients.length}</ChatCounter>
+
+          <ClientsList>
+            {clientsList}
+          </ClientsList>
         </ChatNotify>
 
         <ChatCaption>
@@ -62,4 +77,12 @@ class LoginPage extends React.PureComponent {
   };
 };
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => ({
+  selectClient(clientData) {
+    dispatch(selectClient['START'](clientData));
+  },
+});
+
+export default compose(
+  connect(null, mapDispatchToProps),
+)(LoginPage);
