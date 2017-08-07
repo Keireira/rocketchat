@@ -6,17 +6,21 @@ import { formatUNIXTimestamp } from 'helpers';
 
 import AccountInfo from './AccountInfo';
 import LastOperation from './LastOperation';
-import { SubText, SubAccountInfo, StyledAccountCart } from './styles';
+import { SubText, SubAccountInfo, StyledAccountCard } from './styles';
 
-const AccountCart = (props) => {
+const AccountCard = (props) => {
   const created = formatUNIXTimestamp(props.created, true);
 
   return (
-    <StyledAccountCart>
+    <StyledAccountCard>
       <AccountInfo
-        balance={props.balance}
-        currency={props.currency}
+        selectAccount={props.selectAccount}
         accountNumber={props.number}
+        currency={props.currency}
+        isSingle={props.isSingle}
+        balance={props.balance}
+        created={props.created}
+        annual={props.annual}
         match={props.match}
       />
 
@@ -24,18 +28,18 @@ const AccountCart = (props) => {
         <SubText>{props.annual}% {locales.annual}</SubText>
         <SubText>{locales.created}: {created}</SubText>
 
-        { props.showLastOperation && (
+        { (Boolean(props.isSingle) === false) && (
           <LastOperation
             currency={props.currency}
             operation={props.last_operation}
           />
         )}
       </SubAccountInfo>
-    </StyledAccountCart>
+    </StyledAccountCard>
   );
 };
 
-AccountCart.propTypes = {
+AccountCard.propTypes = {
   annual: PropTypes.number,
   balance: PropTypes.number,
   created: PropTypes.number,
@@ -43,18 +47,18 @@ AccountCart.propTypes = {
   last_operation: PropTypes.object,
   number: PropTypes.number,
   match: PropTypes.object,
-  showLastOperation: PropTypes.bool,
+  isSingle: PropTypes.bool,
 };
 
-AccountCart.defaultProps = {
-  annual: -1,
-  balance: -1,
-  created: -1,
+AccountCard.defaultProps = {
+  annual: 0,
+  balance: 0,
+  created: 0,
   currency: '',
   last_operation: {},
-  number: -1,
+  number: 0,
   match: {},
-  showLastOperation: true,
+  isSingle: false,
 };
 
-export default AccountCart;
+export default AccountCard;

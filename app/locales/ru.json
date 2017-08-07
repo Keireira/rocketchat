@@ -7,5 +7,12 @@
   "deposits": "Вклады",
   "annual": "годовых",
   "created": "Создан",
-  "last_operation": "Последняя операция"
+  "last_operation": "Последняя операция",
+
+  "operations_history": "История операций",
+  "actions": {
+    "top_up": "Пополнение с карты",
+    "percent": "Начисление процентов",
+    "charge_off": "Списание на карту"
+  }
 }

@@ -6,4 +6,6 @@ export const Root = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.snow(1)};
 `;

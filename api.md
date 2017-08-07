@@ -14,7 +14,7 @@ response example:
         "currency": "€",
         "last_operation": {
           "amount": 6554,
-          "carried_out": 1500502905,
+          "carriedOut": 1500502905,
           "positive": true,
           "type": "percent"
         }
@@ -35,15 +35,15 @@ response example:
   "account": [
     {
       "amount": 6481.33,
-      "carried_out": 1502672968,
-      "last_cart_number": 7369,
+      "carriedOut": 1502672968,
+      "lastCartNumber": "7369",
       "positive": true,
       "type": "percent"
     },
     {
       "amount": 877.63,
-      "carried_out": 1500698921,
-      "last_cart_number": 3694,
+      "carriedOut": 1500698921,
+      "lastCartNumber": "3694",
       "positive": true,
       "type": "top_up"
     }

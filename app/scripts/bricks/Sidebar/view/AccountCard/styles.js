@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
-export const SubText = styled.span`
-  display: flex;
+export const SubText = styled.div`
+  width: 100%;
+  display: block;
 
   font-size: .875rem;
-  color: ${({ theme }) => theme.spanish_gray(1)};
-
   white-space: nowrap;
+  color: ${({ theme }) => theme.spanish_gray(1)};
 `;
 
 export const SubAccountInfo = styled.div`
   margin-top: 15px;
 `;
 
-export const StyledAccountCart = styled.div`
-  display: flex;
-  flex-direction: column;
+export const StyledAccountCard = styled.div`
+  width: 100%;
 
   font-family: 'roboto-regular';
   line-height: 1.25rem;
