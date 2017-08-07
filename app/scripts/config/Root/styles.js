@@ -7,5 +7,5 @@ export const Root = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.snow(1)}
+  background-color: ${({ theme }) => theme.snow(1)};
 `;
