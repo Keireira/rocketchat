@@ -34,6 +34,7 @@ const AppRouter = ({ ...props }) => {
 
         <Route path="/chat/:type" render={(props) => renderIndex(Chat, props)} />
 
+        <Redirect from="/chat/" to="/chat/accounts/" />
         <Redirect from="*" to="/" />
       </Switch>
     </Router>

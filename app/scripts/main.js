@@ -11,6 +11,14 @@ const initialState = {
   locale: {
     currentLocale: 'ru',
   },
+  users: {
+    operator: {
+      id: 9999,
+      isClient: false,
+      displayName: 'Алёна',
+      avatarUrl: 'https://randomuser.me/api/portraits/women/95.jpg',
+    },
+  },
 };
 
 const history = createHistory();
