@@ -4,35 +4,50 @@ import locales from 'locales';
 
 import { StyledChatField, Caption, Form, Textfield, Button } from './styles';
 
-const submitMessage = (event) => {
-  event.preventDefault();
+class ChatField extends React.PureComponent {
+  sendMessage = (message, callback) => {
+    if (typeof this.props.sendMessage === 'function') {
+      this.props.sendMessage(message);
+    }
 
-  const { message } = event.target.elements;
-  console.log('message', message.value);
+    if (typeof callback === 'function') {
+      callback();
+    }
 
-  message.value = '';
-};
+    console.log('message', message);
+  };
 
-const triggerFormSubmit = ({ ctrlKey, metaKey, keyCode, target }) => {
-  const isTriggered = (ctrlKey || metaKey) && (keyCode === 13 || keyCode === 10);
+  submitForm = (event) => {
+    event.preventDefault();
 
-  if (isTriggered) {
-    const { submit } = target.form.elements;
-    submit.click();
-  }
-};
+    const { message } = event.target.elements;
+    this.sendMessage(message.value, (value = '') => {
+      message.value = value;
+    });
+  };
 
-const ChatField = () => {
-  return (
-    <StyledChatField>
-      <Caption>{locales.chat}</Caption>
+  submitText = ({ ctrlKey, metaKey, keyCode, target }) => {
+    const isMetaEnter = (ctrlKey || metaKey) && (keyCode === 13 || keyCode === 10);
 
-      <Form method="post" onSubmit={submitMessage}>
-        <Textfield name="message" placeholder={locales.message} onKeyDown={triggerFormSubmit} />
-        <Button name="submit">{locales.send}</Button>
-      </Form>
-    </StyledChatField>
-  );
+    if (isMetaEnter) {
+      this.sendMessage(target.value, (value = '') => {
+        target.value = value;
+      });
+    }
+  };
+
+  render() {
+    return (
+      <StyledChatField>
+        <Caption>{locales.chat}</Caption>
+
+        <Form method="post" onSubmit={this.submitForm}>
+          <Textfield name="message" placeholder={locales.message} onKeyDown={this.submitText} />
+          <Button>{locales.send}</Button>
+        </Form>
+      </StyledChatField>
+    );
+  };
 };
 
 export default ChatField;
