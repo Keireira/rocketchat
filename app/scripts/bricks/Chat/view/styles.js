@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-export const Tmp = styled.div`
+export const Content = styled.div`
   width: 100%;
-  height: 100vh;
 `;
 
-export const Test = styled.div`
+export const ScrollContainer = styled.div`
   width: 100%;
   flex-grow: 1;
-  padding-right: 60px;
 
   overflow: auto;
+  padding-right: 70px;
 
   &::-webkit-scrollbar {
-    width: 9px;
     overflow: hidden;
+
+    width: 9px;
     border-radius: 100px;
   }
 
@@ -29,15 +29,14 @@ export const Test = styled.div`
   }
 `;
 
-export const ChatHistyWrapper = styled.div`
+export const ChatHistoryWrapper = styled.div`
   width: 100%;
-  flex-grow: 1;
-  padding-bottom: 30px;
-  padding-right: 30px;
-  padding-left: 100px;
 
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+
+  padding: 0 30px 30px 106px;
 `;
 
 export const StyledChat = styled.div`
