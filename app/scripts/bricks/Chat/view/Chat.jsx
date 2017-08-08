@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ChatField from './ChatField';
-import { StyledChat, ChatHistyWrapper, Test } from './styles';
+import { StyledChat, ChatHistyWrapper, Test, Tmp } from './styles';
 
 class Chat extends React.PureComponent {
   render() {
@@ -10,7 +10,9 @@ class Chat extends React.PureComponent {
         <ChatField sendMessage={undefined} />
 
         <ChatHistyWrapper>
-          <Test />
+          <Test>
+            <Tmp />
+          </Test>
         </ChatHistyWrapper>
       </StyledChat>
     );
