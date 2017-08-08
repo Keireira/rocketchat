@@ -56,17 +56,11 @@ export const Caption = styled.div`
 `;
 
 export const StyledChatField = styled.div`
-  display: flex;
-  flex-direction: column;
-
   width: 100%;
-  height: 100vh;
-  max-height: ${toRem(322)};
+  ${'' /* height: 100vh; */}
+  ${'' /* max-height: ${toRem(322)}; */}
 
-  padding-top: ${toRem(62)};
-  padding-left: ${toRem(100)};
-  padding-right: ${toRem(100)};
-  padding-bottom: ${toRem(48)};
+  padding: ${`${toRem(62)} ${toRem(100)} ${toRem(48)} ${toRem(100)}`};
 
   ${media.beta`
     padding-top: ${toRem(50)};
