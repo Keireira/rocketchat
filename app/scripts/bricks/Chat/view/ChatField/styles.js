@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from 'styles/utils';
 import { toRem } from 'styles';
 
 export const Textfield = styled.textarea`
@@ -62,5 +63,18 @@ export const StyledChatField = styled.div`
   height: 100vh;
   max-height: ${toRem(322)};
 
-  padding: ${`${toRem(62)} ${toRem(100)} ${toRem(48)} ${toRem(100)}`};
+  padding-top: ${toRem(62)};
+  padding-left: ${toRem(100)};
+  padding-right: ${toRem(100)};
+  padding-bottom: ${toRem(48)};
+
+  ${media.beta`
+    padding-top: ${toRem(50)};
+  `}
+
+  ${media.gamma`
+    padding-left: ${toRem(50)};
+    padding-right: ${toRem(50)};
+    padding-bottom: ${toRem(48)};
+  `}
 `;

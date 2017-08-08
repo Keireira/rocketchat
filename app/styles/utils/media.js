@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export const sizes = {
   alpha: 1440,
   beta: 1280,
-  gamma: 768,
+  gamma: 1024,
   delta: 414,
 };
 

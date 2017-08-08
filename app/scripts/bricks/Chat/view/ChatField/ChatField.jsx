@@ -6,6 +6,8 @@ import { StyledChatField, Caption, Form, Textfield, Button } from './styles';
 
 class ChatField extends React.PureComponent {
   sendMessage = (message, callback) => {
+    if (message.length < 2) return null;
+
     if (typeof this.props.sendMessage === 'function') {
       this.props.sendMessage(message);
     }
@@ -21,7 +23,9 @@ class ChatField extends React.PureComponent {
     event.preventDefault();
 
     const { message } = event.target.elements;
-    this.sendMessage(message.value, (value = '') => {
+
+    const text = message.value.trim();
+    this.sendMessage(text, (value = '') => {
       message.value = value;
     });
   };
@@ -30,7 +34,9 @@ class ChatField extends React.PureComponent {
     const isMetaEnter = (ctrlKey || metaKey) && (keyCode === 13 || keyCode === 10);
 
     if (isMetaEnter) {
-      this.sendMessage(target.value, (value = '') => {
+      const text = target.value.trim();
+
+      this.sendMessage(text, (value = '') => {
         target.value = value;
       });
     }

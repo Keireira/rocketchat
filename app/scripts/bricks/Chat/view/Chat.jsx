@@ -7,7 +7,7 @@ class Chat extends React.PureComponent {
   render() {
     return (
       <StyledChat>
-        <ChatField />
+        <ChatField sendMessage={undefined} />
       </StyledChat>
     );
   };
