@@ -11,7 +11,7 @@ const startServer = ({ app, server }) => {
 
       setTimeout(() => {
         socket.emit('new_client', clientsCtrl.addNewClient);
-      }, 7000);
+      }, 4000);
     });
 
     socket.on('disconnect', () => {});

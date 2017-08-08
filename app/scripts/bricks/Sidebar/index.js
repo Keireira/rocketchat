@@ -13,12 +13,10 @@ import {
 import View from 'bricks/Sidebar/view';
 
 const makeMapStateToProps = () => {
-  const getCurrentLocale = selectors.makeGetCurrentLocale();
   const getClientAccounts = selectors.makeGetClientAccounts();
   const getAccountData = selectors.makeGetAccountData();
 
   const mapStateToProps = (state) => ({
-    locale: getCurrentLocale(state),
     accounts: getClientAccounts(state),
     account: getAccountData(state),
   });

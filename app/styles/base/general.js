@@ -1,10 +1,11 @@
 import { injectGlobal } from 'styled-components';
+import { rem } from 'styles';
 
 injectGlobal`
   html {
     height: 100%;
     width: 100%;
-    font-size: 1rem;
+    font-size: ${rem}px;
   }
 
   body {

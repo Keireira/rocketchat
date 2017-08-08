@@ -2,18 +2,18 @@ import { createReducer } from 'redux-act';
 import { selectClient, clearClient } from 'actions/users';
 
 const initialState = {
-  client: {},
+  lastClient: {},
   operator: {},
 };
 
-const selectClientFinish = (state, payload) => ({
+const selectClientFinish = (state, lastClient) => ({
   ...state,
-  client: payload,
+  lastClient,
 });
 
 const clearClientFinish = (state) => ({
   ...state,
-  client: {},
+  lastClient: {},
 });
 
 const reducer = createReducer({
