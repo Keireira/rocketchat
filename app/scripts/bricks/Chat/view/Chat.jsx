@@ -11,7 +11,7 @@ import {
 
 class Chat extends React.PureComponent {
   render() {
-    const { operator } = this.props;
+    const { operator, lastClient } = this.props;
 
     return (
       <StyledChat>
@@ -21,10 +21,17 @@ class Chat extends React.PureComponent {
           <ScrollContainer>
             <Content>
               <ChatMessage
-                message=""
+                message="Test mesage from operator."
                 isClient={operator.isClient}
                 avatarUrl={operator.avatarUrl}
                 displayName={operator.displayName}
+              />
+
+              <ChatMessage
+                message="Test mesage from client."
+                isClient={lastClient.isClient}
+                avatarUrl={lastClient.avatarUrl}
+                displayName={lastClient.displayName}
               />
             </Content>
           </ScrollContainer>

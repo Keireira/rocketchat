@@ -26,7 +26,7 @@ ChatMessage.propTypes = {
 ChatMessage.defaultProps = {
   isClient: true,
   message: '',
-  avatarUrl: '',
+  avatarUrl: 'http://placehold.it/120x120',
   displayName: 'User unknowm',
 };
 
