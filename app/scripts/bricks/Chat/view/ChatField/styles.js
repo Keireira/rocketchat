@@ -11,7 +11,7 @@ export const Textfield = styled.textarea`
   border: 1px solid ${({ theme }) => theme.gainsboro(1)};
 
   margin: ${toRem(10)} 0;
-  padding: ${toRem(14)} ${toRem(17)};
+  padding: ${`${toRem(14)} ${toRem(17)}`};
 
   width: 100%;
   height: ${toRem(120)};
@@ -32,7 +32,7 @@ export const Button = styled.button.attrs({
   background-color: ${({ theme }) => theme.blue_jeans(.8)};
 
   transition: all .25s ease-in-out;
-  padding: ${toRem(10)} ${toRem(15)};
+  padding: ${`${toRem(10)} ${toRem(15)}`};
 
   &:hover {
     cursor: pointer;
@@ -62,5 +62,5 @@ export const StyledChatField = styled.div`
   height: 100vh;
   max-height: ${toRem(322)};
 
-  padding: ${toRem(62)} ${toRem(100)} ${toRem(48)} ${toRem(100)};
+  padding: ${`${toRem(62)} ${toRem(100)} ${toRem(48)} ${toRem(100)}`};
 `;
