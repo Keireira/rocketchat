@@ -2,15 +2,26 @@ const { random } = require('lodash');
 const currencySymbols = ['₽', '$', '€'];
 
 const createDeposit = () => {
-  const balance = random(100.00, 30000.99);
+  const created = random(1500000000, 1505555555);
+
+  const passed = random(0, 12);
+  const period = random(passed, passed + 24);
+
   const percent = random(1.00, 10.99);
+  const balance = random(100.00, 30000.99);
+  const tick = balance * percent / 100;
 
   return {
-    balance: parseFloat(balance.toFixed(2)),
+    balance: {
+      current: parseFloat((balance + (tick * passed)).toFixed(2)),
+      init: parseFloat(balance.toFixed(2)),
+      end: parseFloat((balance + (tick * period)).toFixed(2)),
+    },
     percent: parseFloat(percent.toFixed(2)),
-    interestMonth: parseFloat((balance * percent / 100).toFixed(2)),
-    period: 24,
-    passed: 6,
+    tick: parseFloat(tick.toFixed(2)),
+    period,
+    passed,
+    created,
     number: random(1111111, 9999999),
     currency: currencySymbols[random(0, 2)],
   };

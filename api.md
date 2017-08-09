@@ -67,17 +67,73 @@ response example:
 ```
 
 `POST /api/client/deposits`
+params:
+  client_id<Integer>: # ID клиента
+```
+[{
+  "balance": {
+    "current": 9298.23,
+    "init": 7106.5,
+    "end": 15142.84
+  },
+  "percent": 5.14,
+  "tick": 365.29,
+  "period": 22,
+  "passed": 6,
+  "created": 1500347621,
+  "number": 8379298,
+  "currency": "$"
+}]
+```
+
+`POST /api/client/deposit`
+params:
+  client_id<Integer>: # ID клиента
+  product_id<Integer>: # Номер продукта (счёт, вклад)  
+  get_deposit<Boolean>: # Передавать ли вместе с историей информацию о вкладе
 ```
 {
-  "deposits": [
+  "deposit": {
+    "balance": {
+      "current": 41651.53,
+      "init": 22569.07,
+      "end": 64550.48
+    },
+    "percent": 8.46,
+    "period": 22,
+    "passed": 10,
+    "created": 1500615856,
+    "number": 2660859,
+    "currency": "₽"
+  },
+  "history": [
     {
-      "balance": 3123.32,
-      "percent": 8.88,
-      "interestMonth": 277.35,
-      "period": 24,
-      "passed": 6,
-      "number": 6910764,
-      "currency": "€"
+      "balance": 9998164.80042773,
+      "tick": 1306.12,
+      "currency": "€",
+      "created": 1500440018,
+      "type": "percent"
+    },
+    {
+      "balance": 2496246.831303064,
+      "tick": 3770.92,
+      "currency": "€",
+      "created": 1500771520,
+      "type": "percent"
+    },
+    {
+      "balance": 6409881.048780619,
+      "tick": 4480.82,
+      "currency": "€",
+      "created": 1504987517,
+      "type": "percent"
+    },
+    {
+      "balance": 1415168.311353467,
+      "tick": 1776.35,
+      "currency": "₽",
+      "created": 1502809147,
+      "type": "open"
     }
   ]
 }
