@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import locales from 'locales';
 import { formatBalance, formatUNIXTimestamp } from 'helpers';
 
-import { SubText } from '../styles';
 import { Positive, Negative } from './styles';
+import { SubText } from 'bricks/Sidebar/view/styles';
 
 const getLastAmount = (type, text) => (type) ? <Positive>{text}</Positive> : <Negative>{text}</Negative>;
 
