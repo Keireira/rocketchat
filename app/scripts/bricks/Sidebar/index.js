@@ -31,6 +31,9 @@ const mapDispatchToProps = (dispatch) => {
     getAccountData,
     selectAccount,
     clearAccount,
+
+    getDepositsList,
+    clearDepositsList,
   } = sidebarAct;
 
   return {
@@ -48,6 +51,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     getAccountData({ clientId, productId, getAccount }) {
       dispatch(getAccountData['INIT'](clientId, productId, getAccount));
+    },
+
+    getDepositsList(clientId) {
+      dispatch(getDepositsList['INIT'](clientId));
+    },
+    clearDepositsList() {
+      dispatch(clearDepositsList['START']());
     },
   };
 };

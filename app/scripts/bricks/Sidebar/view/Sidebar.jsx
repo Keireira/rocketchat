@@ -15,11 +15,19 @@ class Sidebar extends React.PureComponent {
     if (typeof this.props.getAccountsList === 'function') {
       this.props.getAccountsList(888);
     }
+
+    if (typeof this.props.getDepositsList === 'function') {
+      this.props.getDepositsList(888);
+    }
   };
 
   componentWillUnmount() {
     if (typeof this.props.clearAccountsList === 'function') {
       this.props.clearAccountsList();
+    }
+
+    if (typeof this.props.clearDepositsList === 'function') {
+      this.props.clearDepositsList();
     }
   };
 
