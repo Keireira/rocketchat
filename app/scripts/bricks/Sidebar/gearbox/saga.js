@@ -64,6 +64,15 @@ function* clearDepositsListSaga() {
   yield put(sidebarAct.clearDepositsList['FINISH']());
 };
 
+function* selectDepositSaga(action) {
+  const { depositData } = action.payload;
+  yield put(sidebarAct.selectDeposit['FINISH'](depositData));
+};
+
+function* clearDepositSaga() {
+  yield put(sidebarAct.clearDeposit['FINISH']());
+};
+
 export default function* watchCarousel() {
   yield all([
     takeLatest([sidebarAct.getAccountsList['INIT']], getAccountsListSaga),
@@ -74,5 +83,7 @@ export default function* watchCarousel() {
 
     takeLatest([sidebarAct.getDepositsList['INIT']], getDepositsListSaga),
     takeLatest([sidebarAct.clearDepositsList['START']], clearDepositsListSaga),
+    takeLatest([sidebarAct.selectDeposit['START']], selectDepositSaga),
+    takeLatest([sidebarAct.clearDeposit['START']], clearDepositSaga),
   ]);
 };

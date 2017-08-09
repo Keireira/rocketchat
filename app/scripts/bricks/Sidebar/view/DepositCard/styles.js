@@ -6,9 +6,9 @@ export const Progressbar = styled.div`
 
   width: 100%;
   height: 22px;
-  margin-top: 8px;
+  margin-top: 15px;
   border-radius: 24px;
-  background-color: ${({ theme }) => theme.gainsboro(1)};
+  background-color: ${({ theme }) => theme.platinum(1)};
 
   &::before {
     position: absolute;

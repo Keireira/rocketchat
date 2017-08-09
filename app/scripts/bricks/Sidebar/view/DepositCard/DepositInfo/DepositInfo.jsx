@@ -11,13 +11,14 @@ class DepositInfo extends React.PureComponent {
   expandDepositData = () => {
     if (typeof this.props.selectDeposit === 'function') {
       const depositData = {
+        tick: this.props.tick,
         number: this.props.number,
         passed: this.props.passed,
         period: this.props.period,
         percent: this.props.percent,
         created: this.props.created,
+        balance: this.props.balance,
         currency: this.props.currency,
-        currentBalance: this.props.balance.current,
         history: [],
       };
 
@@ -42,7 +43,7 @@ class DepositInfo extends React.PureComponent {
         )}
 
         {(showClose) && (
-          <IconWrapper to="/chat/accounts/">
+          <IconWrapper to="/chat/deposits/">
             <CloseIcon width={15} height={14} />
           </IconWrapper>
         )}
@@ -52,6 +53,7 @@ class DepositInfo extends React.PureComponent {
 };
 
 DepositInfo.propTypes = {
+  tick: PropTypes.number,
   match: PropTypes.object,
   number: PropTypes.number,
   passed: PropTypes.number,
@@ -64,6 +66,7 @@ DepositInfo.propTypes = {
 };
 
 DepositInfo.defaultProps = {
+  tick: 0,
   match: {},
   number: 0,
   passed: 0,

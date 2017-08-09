@@ -40,7 +40,10 @@ const reducer = createReducer({
   [sidebarAct.clearAccountsList['FINISH']]: accountsHd.clearAccountsListFinish,
   [sidebarAct.selectAccount['FINISH']]: accountsHd.selectAccountFinish,
   [sidebarAct.clearAccount['FINISH']]: accountsHd.clearAccountFinish,
+
   [sidebarAct.clearDepositsList['FINISH']]: depositsHd.clearDepositsListFinish,
+  [sidebarAct.selectDeposit['FINISH']]: depositsHd.selectDepositFinish,
+  [sidebarAct.clearDeposit['FINISH']]: depositsHd.clearDepositFinish,
 }, initialState);
 
 export default reducer;

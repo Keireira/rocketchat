@@ -34,6 +34,8 @@ const mapDispatchToProps = (dispatch) => {
 
     getDepositsList,
     clearDepositsList,
+    selectDeposit,
+    clearDeposit,
   } = sidebarAct;
 
   return {
@@ -58,6 +60,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearDepositsList() {
       dispatch(clearDepositsList['START']());
+    },
+
+    selectDeposit(depositData) {
+      dispatch(selectDeposit['START'](depositData));
+    },
+    clearDeposit() {
+      dispatch(clearDeposit['START']());
     },
   };
 };
