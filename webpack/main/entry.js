@@ -23,21 +23,20 @@ entry.main.push(
 );
 
 entry.vendor.push(
-  'prop-types',
   'react',
-  'react-dom',
-  'react-helmet',
-  'react-redux',
-  'react-localization',
-  'react-router-dom',
-  'react-router-redux',
   'redux',
-  'redux-act',
-  'redux-saga',
   'reselect',
-  'recompose',
+  'redux-act',
+  'react-dom',
+  'prop-types',
+  'redux-saga',
+  'react-redux',
+  'react-helmet',
+  'react-router-dom',
+  'socket.io-client',
   'styled-components',
-  'uuid'
+  'react-localization',
+  'react-router-redux'
 );
 
 module.exports = entry;
