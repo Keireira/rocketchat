@@ -12,14 +12,14 @@ import { Tab, Tabs, Content, StyledSidebar, ContentWrapper } from './styles';
 
 class Sidebar extends React.PureComponent {
   componentDidMount() {
-    if (typeof this.props.getClientAccounts === 'function') {
-      this.props.getClientAccounts(888);
+    if (typeof this.props.getAccountsList === 'function') {
+      this.props.getAccountsList(888);
     }
   };
 
   componentWillUnmount() {
-    if (typeof this.props.clearClientAccounts === 'function') {
-      this.props.clearClientAccounts();
+    if (typeof this.props.clearAccountsList === 'function') {
+      this.props.clearAccountsList();
     }
   };
 
@@ -44,12 +44,22 @@ class Sidebar extends React.PureComponent {
     );
   };
 
-  renderDeposits = () => {
-    return <Deposits deposits={this.props.deposits} />;
+  renderDeposits = ({ match }) => {
+    return (
+      <Deposits
+        deposits={this.props.deposits}
+        match={match}
+      />
+    );
   };
 
-  renderDepositDetails = () => {
-    return <DepositDetails />;
+  renderDepositDetails = ({ match }) => {
+    return (
+      <DepositDetails
+        deposit={this.props.deposit}
+        match={match}
+      />
+    );
   };
 
   render() {
@@ -82,12 +92,15 @@ Sidebar.propTypes = {
   accounts: PropTypes.array,
   deposits: PropTypes.array,
   account: PropTypes.object,
+  deposit: PropTypes.object,
+  selectAccount: PropTypes.func.isRequired,
 };
 
 Sidebar.defaultProps = {
   accounts: [],
   deposits: [],
   account: {},
+  deposit: {},
 };
 
 export default Sidebar;

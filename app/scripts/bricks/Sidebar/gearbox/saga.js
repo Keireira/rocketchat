@@ -1,36 +1,36 @@
 import api from 'api';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import {
-  getClientAccounts,
-  clearClientAccounts,
   getAccountData,
-  selectAccount,
+  getAccountsList,
+  clearAccountsList,
   clearAccount,
-} from './actions';
+  selectAccount,
+} from './actions/accounts';
 
-function* getClientAccountsSaga(action) {
+function* getAccountsListSaga(action) {
   const { clientId } = action.payload;
 
   try {
-    const data = yield call(api.getClientAccounts, clientId);
+    const data = yield call(api.getAccountsList, clientId);
 
     switch (data.status) {
-      case 200: yield put(getClientAccounts['DONE'](data.data)); break;
-      case 304: yield put(getClientAccounts['NOT_MODIFIED']()); break;
-      default: yield put(getClientAccounts['FAIL']('Can\'t load a data.'));
+      case 200: yield put(getAccountsList['DONE'](data.data)); break;
+      case 304: yield put(getAccountsList['NOT_MODIFIED']()); break;
+      default: yield put(getAccountsList['FAIL']('Can\'t load a data.'));
     }
   } catch (error) {
-    yield put(getClientAccounts['FAIL'](error));
+    yield put(getAccountsList['FAIL'](error));
   }
 };
 
 function* selectAccountSaga(action) {
-  const accountData = action.payload;
+  const { accountData } = action.payload;
   yield put(selectAccount['FINISH'](accountData));
 };
 
-function* clearClientAccountsSaga() {
-  yield put(clearClientAccounts['FINISH']());
+function* clearAccountsListSaga() {
+  yield put(clearAccountsList['FINISH']());
 };
 
 function* clearAccountSaga() {
@@ -53,8 +53,8 @@ function* getAccountDataSaga({ payload }) {
 
 export default function* watchCarousel() {
   yield all([
-    takeLatest([getClientAccounts['INIT']], getClientAccountsSaga),
-    takeLatest([clearClientAccounts['START']], clearClientAccountsSaga),
+    takeLatest([getAccountsList['INIT']], getAccountsListSaga),
+    takeLatest([clearAccountsList['START']], clearAccountsListSaga),
     takeLatest([selectAccount['START']], selectAccountSaga),
     takeLatest([clearAccount['START']], clearAccountSaga),
     takeLatest([getAccountData['INIT']], getAccountDataSaga),

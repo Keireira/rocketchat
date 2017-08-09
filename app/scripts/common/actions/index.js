@@ -1,10 +1,13 @@
-import * as localeTMP from './locale';
-import * as usersTMP from './users';
+import sidebar from 'bricks/Sidebar/gearbox/actions';
+import locale from './locale';
+import users from './users';
 
-export const locale = localeTMP;
-export const users = usersTMP;
+export const sidebarAct = sidebar;
+export const localesAct = locale;
+export const usersAct = users;
 
 export default {
   ...locale,
   ...users,
+  ...sidebar,
 };

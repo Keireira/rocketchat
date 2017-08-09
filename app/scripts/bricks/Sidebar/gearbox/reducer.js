@@ -1,11 +1,11 @@
 import { createReducer } from 'redux-act';
 import {
-  getClientAccounts,
-  clearClientAccounts,
   getAccountData,
-  selectAccount,
+  getAccountsList,
+  clearAccountsList,
   clearAccount,
-} from './actions';
+  selectAccount,
+} from './actions/accounts';
 
 const initialState = {
   isFetching: false,
@@ -38,7 +38,7 @@ const defaultNotModifiedHandler = (state) => ({
 });
 
 // Get all client accounts
-const getClientAccountsDone = (state, { accounts }) => ({
+const getAccountsListDone = (state, { accounts }) => ({
   ...state,
   isFetching: false,
   error: null,
@@ -46,7 +46,7 @@ const getClientAccountsDone = (state, { accounts }) => ({
 });
 
 // Remove data about client accounts
-const clearClientAccountsFinish = (state) => ({
+const clearAccountsListFinish = (state) => ({
   ...state,
   error: null,
   accounts: [],
@@ -82,23 +82,23 @@ const getAccountDataDone = (state, payload) => {
 
 const reducer = createReducer({
   // Inits
-  [getClientAccounts['INIT']]: defaultInitHandler,
+  [getAccountsList['INIT']]: defaultInitHandler,
   [getAccountData['INIT']]: defaultInitHandler,
 
   // Fails
-  [getClientAccounts['FAIL']]: defaultFailHandler,
+  [getAccountsList['FAIL']]: defaultFailHandler,
   [getAccountData['FAIL']]: defaultFailHandler,
 
   // 304's
-  [getClientAccounts['NOT_MODIFIED']]: defaultNotModifiedHandler,
+  [getAccountsList['NOT_MODIFIED']]: defaultNotModifiedHandler,
   [getAccountData['NOT_MODIFIED']]: defaultNotModifiedHandler,
 
   // 200's
-  [getClientAccounts['DONE']]: getClientAccountsDone,
+  [getAccountsList['DONE']]: getAccountsListDone,
   [getAccountData['DONE']]: getAccountDataDone,
 
   // Sync actions
-  [clearClientAccounts['FINISH']]: clearClientAccountsFinish,
+  [clearAccountsList['FINISH']]: clearAccountsListFinish,
   [selectAccount['FINISH']]: selectAccountFinish,
   [clearAccount['FINISH']]: clearAccountFinish,
 }, initialState);
