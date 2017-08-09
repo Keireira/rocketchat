@@ -5,7 +5,7 @@ import locales from 'locales';
 import { formatBalance } from 'helpers';
 
 import { MaximizeIcon, CloseIcon } from 'icons/ux';
-import { StyledAccountInfo, AccNumber, AccBalance, IconWrapper } from './styles';
+import { InfoWrapper, ProductNumber, ProductBalance, IconWrapper } from 'bricks/Sidebar/view/styles';
 
 class AccountInfo extends React.PureComponent {
   expandAccountData = () => {
@@ -29,9 +29,9 @@ class AccountInfo extends React.PureComponent {
     const formattedBalance = formatBalance(this.props.balance);
 
     return (
-      <StyledAccountInfo>
-        <AccNumber>{locales.account} № {accountNumber}</AccNumber>
-        <AccBalance>{`${formattedBalance} ${this.props.currency}`}</AccBalance>
+      <InfoWrapper>
+        <ProductNumber>{locales.account} № {accountNumber}</ProductNumber>
+        <ProductBalance>{`${formattedBalance} ${this.props.currency}`}</ProductBalance>
 
         {(showClose === false) && (
           <IconWrapper to={`${match.path}${accountNumber}`} onClick={this.expandAccountData}>
@@ -44,7 +44,7 @@ class AccountInfo extends React.PureComponent {
             <CloseIcon width={15} height={14} />
           </IconWrapper>
         )}
-      </StyledAccountInfo>
+      </InfoWrapper>
     );
   };
 };
