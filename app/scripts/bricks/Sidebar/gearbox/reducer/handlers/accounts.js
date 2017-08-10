@@ -28,18 +28,16 @@ export const clearAccountFinish = (state) => ({
 });
 
 // Retrieve account data from server
-export const getAccountDataDone = (state, payload) => {
-  return {
-    ...state,
-    error: null,
-    isFetching: false,
-    account: {
-      ...state.account,
-      ...payload.account,
-      history: payload.history,
-    },
-  };
-};
+export const getAccountDataDone = (state, payload) => ({
+  ...state,
+  error: null,
+  isFetching: false,
+  account: {
+    ...state.account,
+    ...payload.account,
+    history: payload.history,
+  },
+});
 
 export default {
   clearAccountFinish,

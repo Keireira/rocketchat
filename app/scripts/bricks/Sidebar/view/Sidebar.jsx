@@ -55,6 +55,7 @@ class Sidebar extends React.PureComponent {
   renderDeposits = ({ match }) => {
     return (
       <Deposits
+        selectDeposit={this.props.selectDeposit}
         deposits={this.props.deposits}
         match={match}
       />
@@ -64,6 +65,8 @@ class Sidebar extends React.PureComponent {
   renderDepositDetails = ({ match }) => {
     return (
       <DepositDetails
+        getDepositData={this.props.getDepositData}
+        clearDeposit={this.props.clearDeposit}
         deposit={this.props.deposit}
         match={match}
       />

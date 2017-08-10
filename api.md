@@ -104,7 +104,8 @@ params:
     "passed": 10,
     "created": 1500615856,
     "number": 2660859,
-    "currency": "₽"
+    "currency": "₽",
+    "tick: 2000
   },
   "history": [
     {
