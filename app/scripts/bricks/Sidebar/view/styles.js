@@ -152,3 +152,53 @@ export const InfoWrapper = styled.div`
   position: relative;
   color: ${({ theme }) => theme.jet(1)};
 `;
+
+export const HistoryTitle = styled.div`
+  font-size: 1rem;
+  padding: .75rem 2.5rem;
+`;
+
+export const HistoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  overflow-y: scroll;
+
+  width: 100%;
+`;
+
+export const ProductDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-family: 'roboto-regular';
+  color: ${({ theme }) => theme.spanish_gray(1)};
+`;
+
+export const HistoryContent = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const HistoryItemWrapper = styled.div`
+  width: 100%;
+  padding: .75rem 2.5rem;
+
+  &:nth-of-type(odd) {
+    background-color: ${({ theme }) => theme.snow(1)};
+  }
+
+  &:hover {
+    cursor: default;
+  }
+`;

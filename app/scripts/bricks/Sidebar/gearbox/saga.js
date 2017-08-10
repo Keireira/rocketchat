@@ -73,6 +73,20 @@ function* clearDepositSaga() {
   yield put(sidebarAct.clearDeposit['FINISH']());
 };
 
+function* getDepositDataSaga({ payload }) {
+  try {
+    const data = yield call(api.getDeposit, payload);
+
+    switch (data.status) {
+      case 200: yield put(sidebarAct.getDepositData['DONE'](data.data)); break;
+      case 304: yield put(sidebarAct.getDepositData['NOT_MODIFIED']()); break;
+      default: yield put(sidebarAct.getDepositData['FAIL'](data));
+    }
+  } catch (error) {
+    yield put(sidebarAct.getDepositData['FAIL'](error));
+  }
+};
+
 export default function* watchCarousel() {
   yield all([
     takeLatest([sidebarAct.getAccountsList['INIT']], getAccountsListSaga),
@@ -85,5 +99,6 @@ export default function* watchCarousel() {
     takeLatest([sidebarAct.clearDepositsList['START']], clearDepositsListSaga),
     takeLatest([sidebarAct.selectDeposit['START']], selectDepositSaga),
     takeLatest([sidebarAct.clearDeposit['START']], clearDepositSaga),
+    takeLatest([sidebarAct.getDepositData['INIT']], getDepositDataSaga),
   ]);
 };

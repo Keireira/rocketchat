@@ -25,9 +25,21 @@ export const clearDepositFinish = (state) => ({
   },
 });
 
+export const getDepositDataDone = (state, payload) => ({
+  ...state,
+  error: null,
+  isFetching: false,
+  deposit: {
+    ...state.deposit,
+    ...payload.deposit,
+    history: payload.history,
+  },
+});
+
 export default {
   getDepositsListDone,
   clearDepositsListFinish,
   selectDepositFinish,
   clearDepositFinish,
+  getDepositDataDone,
 };
