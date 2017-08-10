@@ -13,7 +13,33 @@ export const clearDepositsListFinish = (state) => ({
   deposits: [],
 });
 
+export const selectDepositFinish = (state, deposit) => ({
+  ...state,
+  deposit,
+});
+
+export const clearDepositFinish = (state) => ({
+  ...state,
+  deposit: {
+    history: [],
+  },
+});
+
+export const getDepositDataDone = (state, payload) => ({
+  ...state,
+  error: null,
+  isFetching: false,
+  deposit: {
+    ...state.deposit,
+    ...payload.deposit,
+    history: payload.history,
+  },
+});
+
 export default {
   getDepositsListDone,
   clearDepositsListFinish,
+  selectDepositFinish,
+  clearDepositFinish,
+  getDepositDataDone,
 };

@@ -22,6 +22,7 @@ const createDepositStub = () => {
     period,
     passed,
     created,
+    tick,
     number: random(1111111, 9999999),
     currency: currencySymbols[random(0, 2)],
   };

@@ -14,7 +14,7 @@ const DepositCard = (props) => {
 
   return (
     <MainWrapper>
-      <DepositInfo {...props} />
+      <DepositInfo selectDeposit={props.selectDeposit} {...props} />
 
       <SubInfo>
         <SubText>{`${props.percent}% ${locales.annual}`}</SubText>
