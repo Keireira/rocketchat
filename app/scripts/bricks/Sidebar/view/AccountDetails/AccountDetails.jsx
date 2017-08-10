@@ -5,7 +5,7 @@ import locales from 'locales';
 
 import HistoryCard from './HistoryCard';
 import AccountCard from '../AccountCard';
-import { StyledAccountDetails, HistoryTitle, HistoryWrapper } from './styles';
+import { ProductDetails, HistoryTitle, HistoryWrapper } from 'bricks/Sidebar/view/styles';
 
 class AccountDetails extends React.PureComponent {
   componentWillMount() {
@@ -55,7 +55,7 @@ class AccountDetails extends React.PureComponent {
     const historyCardsList = this.createHistoryCardsList();
 
     return (
-      <StyledAccountDetails>
+      <ProductDetails>
         <AccountCard isSingle match={this.props.match} {...this.props.accountData} />
 
         <HistoryTitle>
@@ -65,7 +65,7 @@ class AccountDetails extends React.PureComponent {
         <HistoryWrapper>
           {historyCardsList}
         </HistoryWrapper>
-      </StyledAccountDetails>
+      </ProductDetails>
     );
   };
 };

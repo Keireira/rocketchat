@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { formatBalance } from 'helpers';
 
 import { MingleShareicon } from 'icons/ux';
-import { StyledTxAmount, IconWrapper, Positive, Negative } from './styles';
+import { StyledTxAmount, Positive, Negative, IconWrapper } from './styles';
 
 const TxAmount = ({ amount, positive, currency }) => {
   const formattedAmouunt = formatBalance(amount);
@@ -16,7 +16,7 @@ const TxAmount = ({ amount, positive, currency }) => {
     <StyledTxAmount>
       {txAmount}
 
-      <IconWrapper>
+      <IconWrapper to="/">
         <MingleShareicon width={16} height={16} />
       </IconWrapper>
     </StyledTxAmount>

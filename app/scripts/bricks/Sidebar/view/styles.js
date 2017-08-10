@@ -20,6 +20,7 @@ export const Tab = styled(NavLink).attrs({
   background-color: $${({ theme }) => theme.white(1)};
 
   &.selectedTab {
+    pointer-events: none;
     color: ${({ theme }) => theme.white(1)};
     background-color: ${({ theme }) => theme.blue_jeans(1)};
   }
@@ -83,4 +84,121 @@ export const ContentWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+`;
+
+
+// General styles
+export const SubText = styled.div`
+  width: 100%;
+  display: block;
+
+  font-size: .875rem;
+  white-space: nowrap;
+  color: ${({ theme }) => theme.spanish_gray(1)};
+`;
+
+export const SubInfo = styled.div`
+  margin-top: 15px;
+`;
+
+export const MainWrapper = styled.div`
+  width: 100%;
+
+  font-family: 'roboto-regular';
+  line-height: 1.25rem;
+
+  transition: all .25s ease-in-out;
+  padding: 32px 40px;
+
+  &:hover {
+    cursor: default;
+    background-color: ${({ theme }) => theme.snow(1)};
+  }
+`;
+
+export const IconWrapper = styled(NavLink)`
+  display: flex;
+
+  position: absolute;
+  right: -10px;
+  top: -10px;
+
+  padding: 10px;
+  transition: all .2s ease-in-out;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.gainsboro(1)};
+  }
+`;
+
+export const ProductBalance = styled.div`
+  display: block;
+  width: 100%;
+
+  font-size: 1.5rem;
+  margin-top: .8rem;
+`;
+
+export const ProductNumber = styled.div`
+  display: block;
+  width: 100%;
+
+  font-size: 1.25rem;
+`;
+
+export const InfoWrapper = styled.div`
+  position: relative;
+  color: ${({ theme }) => theme.jet(1)};
+`;
+
+export const HistoryTitle = styled.div`
+  font-size: 1rem;
+  padding: .75rem 2.5rem;
+`;
+
+export const HistoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  overflow-y: scroll;
+
+  width: 100%;
+`;
+
+export const ProductDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-family: 'roboto-regular';
+  color: ${({ theme }) => theme.spanish_gray(1)};
+`;
+
+export const HistoryContent = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const HistoryItemWrapper = styled.div`
+  width: 100%;
+  padding: .75rem 2.5rem;
+
+  &:nth-of-type(odd) {
+    background-color: ${({ theme }) => theme.snow(1)};
+  }
+
+  &:hover {
+    cursor: default;
+  }
 `;

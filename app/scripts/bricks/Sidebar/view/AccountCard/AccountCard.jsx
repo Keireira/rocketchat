@@ -6,13 +6,13 @@ import { formatUNIXTimestamp } from 'helpers';
 
 import AccountInfo from './AccountInfo';
 import LastOperation from './LastOperation';
-import { SubText, SubAccountInfo, StyledAccountCard } from './styles';
+import { SubText, SubInfo, MainWrapper } from 'bricks/Sidebar/view/styles';
 
 const AccountCard = (props) => {
   const created = formatUNIXTimestamp(props.created, true);
 
   return (
-    <StyledAccountCard>
+    <MainWrapper>
       <AccountInfo
         selectAccount={props.selectAccount}
         accountNumber={props.number}
@@ -24,7 +24,7 @@ const AccountCard = (props) => {
         match={props.match}
       />
 
-      <SubAccountInfo>
+      <SubInfo>
         <SubText>{props.annual}% {locales.annual}</SubText>
         <SubText>{locales.created}: {created}</SubText>
 
@@ -34,8 +34,8 @@ const AccountCard = (props) => {
             operation={props.last_operation}
           />
         )}
-      </SubAccountInfo>
-    </StyledAccountCard>
+      </SubInfo>
+    </MainWrapper>
   );
 };
 

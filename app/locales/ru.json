@@ -4,9 +4,12 @@
 
   "account": "Счёт",
   "accounts": "Счета",
+  "deposit": "Вклад",
   "deposits": "Вклады",
   "annual": "годовых",
+  "tick": "Начислено",
   "created": "Создан",
+  "balance": "Баланс",
   "last_operation": "Последняя операция",
 
   "operations_history": "История операций",
@@ -14,5 +17,10 @@
     "top_up": "Пополнение с карты",
     "percent": "Начисление процентов",
     "charge_off": "Списание на карту"
+  },
+  "depositActions": {
+    "open": "Вклад открыт",
+    "close": "Вклад закрыт",
+    "percent": "Начисление процентов"
   }
 }

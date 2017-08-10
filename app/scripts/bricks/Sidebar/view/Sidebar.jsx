@@ -12,14 +12,22 @@ import { Tab, Tabs, Content, StyledSidebar, ContentWrapper } from './styles';
 
 class Sidebar extends React.PureComponent {
   componentDidMount() {
-    if (typeof this.props.getClientAccounts === 'function') {
-      this.props.getClientAccounts(888);
+    if (typeof this.props.getAccountsList === 'function') {
+      this.props.getAccountsList(888);
+    }
+
+    if (typeof this.props.getDepositsList === 'function') {
+      this.props.getDepositsList(888);
     }
   };
 
   componentWillUnmount() {
-    if (typeof this.props.clearClientAccounts === 'function') {
-      this.props.clearClientAccounts();
+    if (typeof this.props.clearAccountsList === 'function') {
+      this.props.clearAccountsList();
+    }
+
+    if (typeof this.props.clearDepositsList === 'function') {
+      this.props.clearDepositsList();
     }
   };
 
@@ -44,12 +52,25 @@ class Sidebar extends React.PureComponent {
     );
   };
 
-  renderDeposits = () => {
-    return <Deposits deposits={this.props.deposits} />;
+  renderDeposits = ({ match }) => {
+    return (
+      <Deposits
+        selectDeposit={this.props.selectDeposit}
+        deposits={this.props.deposits}
+        match={match}
+      />
+    );
   };
 
-  renderDepositDetails = () => {
-    return <DepositDetails />;
+  renderDepositDetails = ({ match }) => {
+    return (
+      <DepositDetails
+        getDepositData={this.props.getDepositData}
+        clearDeposit={this.props.clearDeposit}
+        deposit={this.props.deposit}
+        match={match}
+      />
+    );
   };
 
   render() {
@@ -82,12 +103,15 @@ Sidebar.propTypes = {
   accounts: PropTypes.array,
   deposits: PropTypes.array,
   account: PropTypes.object,
+  deposit: PropTypes.object,
+  selectAccount: PropTypes.func.isRequired,
 };
 
 Sidebar.defaultProps = {
   accounts: [],
   deposits: [],
   account: {},
+  deposit: {},
 };
 
 export default Sidebar;

@@ -5,7 +5,7 @@ export const StyledAccounts = styled.div`
   overflow-y: auto;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
 `;
