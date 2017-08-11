@@ -17,7 +17,7 @@ const HistoryItem = (props) => {
       <HistoryContent>
         <TxCaption>
           <SubText>{`${date}`}</SubText>
-          <SubText>{`${locales.depositActions[props.type]}`}</SubText>
+          <SubText>{`${locales.actions[props.type]}`}</SubText>
           <span>{`${locales.balance} ${balance} ${props.currency}`}</span>
         </TxCaption>
 

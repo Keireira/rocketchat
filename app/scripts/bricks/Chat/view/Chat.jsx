@@ -2,6 +2,7 @@ import React from 'react';
 
 import ChatField from './ChatField';
 import ChatMessage from './ChatMessage';
+import OperationMsg from './OperationMsg';
 import {
   StyledChat,
   ChatHistoryWrapper,
@@ -32,6 +33,15 @@ class Chat extends React.PureComponent {
                 isClient={lastClient.isClient}
                 avatarUrl={lastClient.avatarUrl}
                 displayName={lastClient.displayName}
+              />
+
+              <OperationMsg
+                avatarUrl={operator.avatarUrl}
+                carriedOut={1000000}
+                actionType="top_up"
+                cardNumber="4444"
+                transaction={2000}
+                currency="$"
               />
             </Content>
           </ScrollContainer>
