@@ -6,13 +6,14 @@ import createHistory from 'history/createBrowserHistory';
 import Root from 'config/Root';
 import configureStore from 'config/store';
 import locales from 'locales';
+import { getLastClient } from 'helpers';
 
 const initialState = {
   locale: {
     currentLocale: 'ru',
   },
   users: {
-    lastClient: {},
+    lastClient: getLastClient(),
     operator: {
       id: 9999,
       isClient: false,
