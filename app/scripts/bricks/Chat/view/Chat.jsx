@@ -5,8 +5,7 @@ import { socket } from 'api';
 import ChatField from './ChatField';
 import ChatMessage from './ChatMessage';
 import OperationMsg from './OperationMsg';
-import {
-  StyledChat,
+import Wrapper, {
   ChatHistoryWrapper,
   ScrollContainer,
   Content,
@@ -19,7 +18,6 @@ class Chat extends React.PureComponent {
     this.socket = null;
     this.state = {
       showBorder: false,
-      messages: [],
       messagesJsx: [],
     };
   };
@@ -29,7 +27,10 @@ class Chat extends React.PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedOperation.timestamp !== this.props.selectedOperation.timestamp) {
+    const nextTimestamp = nextProps.selectedOperation.timestamp;
+    const currentTimestamp = this.props.selectedOperation.timestamp;
+
+    if (nextTimestamp !== currentTimestamp) {
       this.renderOperation(nextProps.selectedOperation);
     }
   };
@@ -67,6 +68,40 @@ class Chat extends React.PureComponent {
     this.socket.emit('msg to server', message);
   };
 
+  getMessage = (message) => {
+    const { operator, lastClient } = this.props;
+
+    const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
+    const name = (message.isClient) ? lastClient.displayName : operator.displayName;
+
+    return (
+      <ChatMessage
+        key={message.timestamp * 1000}
+        message={message.message}
+        isClient={message.isClient}
+        avatarUrl={avatar}
+        displayName={name}
+      />
+    );
+  };
+
+  getOperation = (operation) => {
+    const { operator } = this.props;
+
+    return (
+      <OperationMsg
+        key={operation.timestamp * 1000 | 0}
+        date={operation.date}
+        currency={operation.currency}
+        avatarUrl={operator.avatarUrl}
+        timestamp={operation.timestamp}
+        actionType={operation.actionType}
+        cardNumber={operation.cardNumber}
+        transaction={operation.transaction}
+      />
+    );
+  };
+
   scrollChat = (event) => {
     const wrapperScroll = event.target.getBoundingClientRect().top + 30;
     const contentScroll = event.target.firstElementChild.getBoundingClientRect().top;
@@ -84,20 +119,8 @@ class Chat extends React.PureComponent {
   };
 
   renderOperation = (operation) => {
-    const { operator } = this.props;
     const { messagesJsx } = this.state;
-
-    const messageJsx = (
-      <OperationMsg
-        key={operation.timestamp}
-        currency={operation.currency}
-        avatarUrl={operator.avatarUrl}
-        timestamp={operation.timestamp}
-        actionType={operation.actionType}
-        cardNumber={operation.cardNumber}
-        transaction={operation.transaction}
-      />
-    );
+    const messageJsx = this.getOperation(operation);
 
     messagesJsx.splice(0, 0, messageJsx);
     this.setState({ messagesJsx });
@@ -105,20 +128,7 @@ class Chat extends React.PureComponent {
 
   renderMessage = (message) => {
     const { messagesJsx } = this.state;
-    const { operator, lastClient } = this.props;
-
-    const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
-    const name = (message.isClient) ? lastClient.displayName : operator.displayName;
-
-    const messageJsx = (
-      <ChatMessage
-        key={message.timestamp}
-        message={message.message}
-        isClient={message.isClient}
-        avatarUrl={avatar}
-        displayName={name}
-      />
-    );
+    const messageJsx = this.getMessage(message);
 
     messagesJsx.splice(0, 0, messageJsx);
     this.setState({ messagesJsx }, () => {
@@ -127,36 +137,16 @@ class Chat extends React.PureComponent {
   };
 
   renderHistory = (messages) => {
-    const { operator, lastClient } = this.props;
-
     return messages.map((message) => {
-      const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
-      const name = (message.isClient) ? lastClient.displayName : operator.displayName;
-
-      return (message.type === 'message') ? (
-        <ChatMessage
-          key={message.timestamp}
-          message={message.message}
-          isClient={message.isClient}
-          avatarUrl={avatar}
-          displayName={name}
-        />
-      ) : (
-        <OperationMsg
-          avatarUrl={operator.avatarUrl}
-          timestamp={1000000}
-          actionType="top_up"
-          cardNumber="4444"
-          transaction={2000}
-          currency="$"
-        />
-      );
+      return (message.type === 'message')
+        ? this.getMessage(message)
+        : this.getOperation(message);
     });
   };
 
   render() {
     return (
-      <StyledChat showBorder={this.state.showBorder}>
+      <Wrapper showBorder={this.state.showBorder}>
         <ChatField sendMessage={this.sendMessage} />
 
         <ChatHistoryWrapper>
@@ -166,7 +156,7 @@ class Chat extends React.PureComponent {
             </Content>
           </ScrollContainer>
         </ChatHistoryWrapper>
-      </StyledChat>
+      </Wrapper>
     );
   };
 };
