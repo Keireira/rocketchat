@@ -68,6 +68,22 @@ class Chat extends React.PureComponent {
     this.socket.emit('msg to server', message);
   };
 
+  scrollChat = (event) => {
+    const wrapperScroll = event.target.getBoundingClientRect().top + 30;
+    const contentScroll = event.target.firstElementChild.getBoundingClientRect().top;
+    const delta = wrapperScroll - contentScroll;
+
+    if (delta >= 10 && this.state.showBorder === false) {
+      this.setState({
+        showBorder: true,
+      });
+    } else if (delta < 10 && this.state.showBorder === true) {
+      this.setState({
+        showBorder: false,
+      });
+    };
+  };
+
   getMessage = (message) => {
     const { operator, lastClient } = this.props;
 
@@ -100,22 +116,6 @@ class Chat extends React.PureComponent {
         transaction={operation.transaction}
       />
     );
-  };
-
-  scrollChat = (event) => {
-    const wrapperScroll = event.target.getBoundingClientRect().top + 30;
-    const contentScroll = event.target.firstElementChild.getBoundingClientRect().top;
-    const delta = wrapperScroll - contentScroll;
-
-    if (delta >= 10 && this.state.showBorder === false) {
-      this.setState({
-        showBorder: true,
-      });
-    } else if (delta < 10 && this.state.showBorder === true) {
-      this.setState({
-        showBorder: false,
-      });
-    };
   };
 
   renderOperation = (operation) => {
