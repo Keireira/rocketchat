@@ -4,7 +4,7 @@ import { socket } from 'api';
 
 import ChatField from './ChatField';
 import ChatMessage from './ChatMessage';
-// import OperationMsg from './OperationMsg';
+import OperationMsg from './OperationMsg';
 import {
   StyledChat,
   ChatHistoryWrapper,
@@ -20,11 +20,18 @@ class Chat extends React.PureComponent {
     this.state = {
       showBorder: false,
       messages: [],
+      messagesJsx: [],
     };
   };
 
   componentWillMount() {
     this.initSocketConnection();
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedOperation.timestamp !== this.props.selectedOperation.timestamp) {
+      this.renderOperation(nextProps.selectedOperation);
+    }
   };
 
   componentWillUnmount() {
@@ -39,17 +46,15 @@ class Chat extends React.PureComponent {
     });
 
     this.socket.on('msg history', ({ messages }) => {
-      this.setState({ messages });
+      this.setState({
+        messagesJsx: this.renderHistory(messages),
+      });
+
       this.socket.emit('msg init');
     });
 
     this.socket.on('msg to client', (message) => {
-      const { messages } = this.state;
-      messages.splice(0, 0, message);
-
-      this.setState({ messages }, () => {
-        this.forceUpdate();
-      });
+      this.renderMessage(message);
     });
   };
 
@@ -78,9 +83,78 @@ class Chat extends React.PureComponent {
     };
   };
 
-  render() {
+  renderOperation = (operation) => {
+    const { operator } = this.props;
+    const { messagesJsx } = this.state;
+
+    const messageJsx = (
+      <OperationMsg
+        key={operation.timestamp}
+        currency={operation.currency}
+        avatarUrl={operator.avatarUrl}
+        timestamp={operation.timestamp}
+        actionType={operation.actionType}
+        cardNumber={operation.cardNumber}
+        transaction={operation.transaction}
+      />
+    );
+
+    messagesJsx.splice(0, 0, messageJsx);
+    this.setState({ messagesJsx });
+  };
+
+  renderMessage = (message) => {
+    const { messagesJsx } = this.state;
     const { operator, lastClient } = this.props;
 
+    const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
+    const name = (message.isClient) ? lastClient.displayName : operator.displayName;
+
+    const messageJsx = (
+      <ChatMessage
+        key={message.timestamp}
+        message={message.message}
+        isClient={message.isClient}
+        avatarUrl={avatar}
+        displayName={name}
+      />
+    );
+
+    messagesJsx.splice(0, 0, messageJsx);
+    this.setState({ messagesJsx }, () => {
+      this.forceUpdate();
+    });
+  };
+
+  renderHistory = (messages) => {
+    const { operator, lastClient } = this.props;
+
+    return messages.map((message) => {
+      const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
+      const name = (message.isClient) ? lastClient.displayName : operator.displayName;
+
+      return (message.type === 'message') ? (
+        <ChatMessage
+          key={message.timestamp}
+          message={message.message}
+          isClient={message.isClient}
+          avatarUrl={avatar}
+          displayName={name}
+        />
+      ) : (
+        <OperationMsg
+          avatarUrl={operator.avatarUrl}
+          timestamp={1000000}
+          actionType="top_up"
+          cardNumber="4444"
+          transaction={2000}
+          currency="$"
+        />
+      );
+    });
+  };
+
+  render() {
     return (
       <StyledChat showBorder={this.state.showBorder}>
         <ChatField sendMessage={this.sendMessage} />
@@ -88,32 +162,7 @@ class Chat extends React.PureComponent {
         <ChatHistoryWrapper>
           <ScrollContainer onScroll={this.scrollChat}>
             <Content>
-              {
-                this.state.messages.map((message) => {
-                  const avatar = (message.isClient) ? lastClient.avatarUrl : operator.avatarUrl;
-                  const name = (message.isClient) ? lastClient.displayName : operator.displayName;
-
-                  return (
-                    <ChatMessage
-                      key={message.timestamp}
-                      message={message.message}
-                      isClient={message.isClient}
-                      avatarUrl={avatar}
-                      displayName={name}
-                    />
-                  );
-                })
-              }
-
-              {/* <OperationMsg
-                avatarUrl={operator.avatarUrl}
-                timestamp={1000000}
-                actionType="top_up"
-                cardNumber="4444"
-                transaction={2000}
-                currency="$"
-              /> */}
-
+              {this.state.messagesJsx}
             </Content>
           </ScrollContainer>
         </ChatHistoryWrapper>

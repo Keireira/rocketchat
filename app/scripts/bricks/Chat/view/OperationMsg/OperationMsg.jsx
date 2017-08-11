@@ -8,7 +8,7 @@ import Wrapper, { Avatar, Message, TxTitle, TxOperation, HiddenNums, Positive, N
 
 const OperationMsg = ({ avatarUrl, timestamp, cardNumber, ...props }) => {
   const operationTime = formatUNIXTimestamp(timestamp, true);
-  const formattedAmount = formatBalance(props.transaction);
+  const formattedAmount = formatBalance(Math.abs(props.transaction));
   const txAmount = (props.transaction >= 0)
     ? <Positive>{`${formattedAmount} ${props.currency}`}</Positive>
     : <Negative>{`${formattedAmount} ${props.currency}`}</Negative>;
