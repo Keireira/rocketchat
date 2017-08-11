@@ -25,6 +25,7 @@ module.exports = {
   'rules': {
     // General JS'
     'no-empty': 0,
+    'no-bitwise': 0,
     'dot-notation': [2, {
       'allowPattern': '^(START|FINISH|INIT|DONE|NOT_MODIFIED|304|FAIL)$',
     }],
@@ -73,6 +74,13 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-no-bind': 1,
     'react/no-unused-prop-types': 0,
+    'react/sort-comp': [2, {
+      order: [
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+      ],
+    }],
 
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/img-has-alt': 0,

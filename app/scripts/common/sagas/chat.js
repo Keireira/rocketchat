@@ -9,7 +9,7 @@ function* clearSelectedOperationSaga() {
   yield put(clearSelectedOperation['FINISH']());
 };
 
-export default function* watchLocale() {
+export default function* watchChat() {
   yield all([
     takeLatest([sendOperationToChat['START']], sendOperationToChatSaga),
     takeLatest([clearSelectedOperation['START']], clearSelectedOperationSaga),

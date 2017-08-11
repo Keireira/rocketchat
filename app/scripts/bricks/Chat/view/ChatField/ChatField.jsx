@@ -9,14 +9,17 @@ class ChatField extends React.PureComponent {
     if (message.length < 2) return null;
 
     if (typeof this.props.sendMessage === 'function') {
-      this.props.sendMessage(message);
+      this.props.sendMessage({
+        isClient: false,
+        type: 'message',
+        timestamp: new Date().getTime() / 1000 | 0,
+        message,
+      });
     }
 
     if (typeof callback === 'function') {
       callback();
     }
-
-    console.log('message', message);
   };
 
   submitForm = (event) => {

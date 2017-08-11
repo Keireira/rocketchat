@@ -42,7 +42,7 @@ export const ChatHistoryWrapper = styled.div`
   padding: 0 30px 30px 106px;
 `;
 
-export const StyledChat = styled.div`
+export default styled.div`
   flex-grow: 1;
   height: 100vh;
   background-color: ${({ theme }) => theme.white_smoke(1)};

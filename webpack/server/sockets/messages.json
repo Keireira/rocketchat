@@ -1,0 +1,46 @@
+{
+  "messages": [
+    {
+      "isClient": false,
+      "type": "message",
+      "timestamp": 1493942830,
+      "message": "Да так. Просто."
+    },
+    {
+      "isClient": true,
+      "type": "message",
+      "timestamp": 1493942600,
+      "message": "А зачем ты делаешь то что делаешь?"
+    },
+    {
+      "isClient": true,
+      "type": "message",
+      "timestamp": 1493942525,
+      "message": "Да вроде тоже всё ок."
+    },
+    {
+      "isClient": false,
+      "type": "message",
+      "timestamp": 1493859000,
+      "message": "Нормально, а у тебя?"
+    },
+    {
+      "isClient": true,
+      "type": "message",
+      "timestamp": 1493858500,
+      "message": "Как дела?"
+    },
+    {
+      "isClient": false,
+      "type": "message",
+      "timestamp": 1493693200,
+      "message": "Привет"
+    },
+    {
+      "isClient": true,
+      "type": "message",
+      "timestamp": 1493690200,
+      "message": "Привет!.."
+    }
+  ]
+}

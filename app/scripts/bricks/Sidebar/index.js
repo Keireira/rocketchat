@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import selectors from 'selectors';
 import { sidebarAct } from 'actions';
+import { sendOperationToChat, clearSelectedOperation } from 'actions/chat';
 
 import View from 'bricks/Sidebar/view';
 
@@ -71,6 +72,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearDeposit() {
       dispatch(clearDeposit['START']());
+    },
+
+    sendOperationToChat(operation) {
+      dispatch(sendOperationToChat['START'](operation));
+    },
+    clearSelectedOperation() {
+      dispatch(clearSelectedOperation['START']());
     },
   };
 };
