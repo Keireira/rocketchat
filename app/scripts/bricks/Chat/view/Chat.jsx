@@ -11,16 +11,57 @@ import {
 } from './styles';
 
 class Chat extends React.PureComponent {
+  state = {
+    showBorder: false,
+  };
+
+  scrollChat = (event) => {
+    const wrapperScroll = event.target.getBoundingClientRect().top + 30;
+    const contentScroll = event.target.firstElementChild.getBoundingClientRect().top;
+    const delta = wrapperScroll - contentScroll;
+
+    if (delta >= 10 && this.state.showBorder === false) {
+      this.setState({
+        showBorder: true,
+      });
+    } else if (delta < 10 && this.state.showBorder === true) {
+      this.setState({
+        showBorder: false,
+      });
+    };
+  };
+
   render() {
     const { operator, lastClient } = this.props;
 
     return (
-      <StyledChat>
+      <StyledChat showBorder={this.state.showBorder}>
         <ChatField sendMessage={undefined} />
 
         <ChatHistoryWrapper>
-          <ScrollContainer>
+          <ScrollContainer onScroll={this.scrollChat}>
             <Content>
+              <ChatMessage
+                message="Test mesage from operator."
+                isClient={operator.isClient}
+                avatarUrl={operator.avatarUrl}
+                displayName={operator.displayName}
+              />
+
+              <ChatMessage
+                message="Test mesage from operator."
+                isClient={operator.isClient}
+                avatarUrl={operator.avatarUrl}
+                displayName={operator.displayName}
+              />
+
+              <ChatMessage
+                message="Test mesage from operator."
+                isClient={operator.isClient}
+                avatarUrl={operator.avatarUrl}
+                displayName={operator.displayName}
+              />
+
               <ChatMessage
                 message="Test mesage from operator."
                 isClient={operator.isClient}
@@ -37,11 +78,18 @@ class Chat extends React.PureComponent {
 
               <OperationMsg
                 avatarUrl={operator.avatarUrl}
-                carriedOut={1000000}
+                timestamp={1000000}
                 actionType="top_up"
                 cardNumber="4444"
                 transaction={2000}
                 currency="$"
+              />
+
+              <ChatMessage
+                message="Test mesage from client."
+                isClient={lastClient.isClient}
+                avatarUrl={lastClient.avatarUrl}
+                displayName={lastClient.displayName}
               />
             </Content>
           </ScrollContainer>

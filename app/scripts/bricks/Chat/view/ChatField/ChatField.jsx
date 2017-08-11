@@ -2,7 +2,7 @@ import React from 'react';
 
 import locales from 'locales';
 
-import { StyledChatField, Caption, Form, Textfield, Button } from './styles';
+import Wrapper, { Caption, Form, Textfield, Button } from './styles';
 
 class ChatField extends React.PureComponent {
   sendMessage = (message, callback) => {
@@ -44,14 +44,14 @@ class ChatField extends React.PureComponent {
 
   render() {
     return (
-      <StyledChatField>
+      <Wrapper>
         <Caption>{locales.chat}</Caption>
 
         <Form method="post" onSubmit={this.submitForm}>
           <Textfield name="message" placeholder={locales.message} onKeyDown={this.submitText} />
           <Button>{locales.send}</Button>
         </Form>
-      </StyledChatField>
+      </Wrapper>
     );
   };
 };

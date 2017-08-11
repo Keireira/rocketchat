@@ -6,8 +6,8 @@ import { formatUNIXTimestamp, formatBalance } from 'helpers';
 
 import Wrapper, { Avatar, Message, TxTitle, TxOperation, HiddenNums, Positive, Negative } from './styles';
 
-const OperationMsg = ({ avatarUrl, carriedOut, cardNumber, ...props }) => {
-  const operationTime = formatUNIXTimestamp(carriedOut, true);
+const OperationMsg = ({ avatarUrl, timestamp, cardNumber, ...props }) => {
+  const operationTime = formatUNIXTimestamp(timestamp, true);
   const formattedAmount = formatBalance(props.transaction);
   const txAmount = (props.transaction >= 0)
     ? <Positive>{`${formattedAmount} ${props.currency}`}</Positive>
@@ -40,7 +40,7 @@ const OperationMsg = ({ avatarUrl, carriedOut, cardNumber, ...props }) => {
 
 OperationMsg.propTypes = {
   avatarUrl: PropTypes.string,
-  carriedOut: PropTypes.number,
+  timestamp: PropTypes.number,
   actionType: PropTypes.string,
   cardNumber: PropTypes.oneOfType([
     PropTypes.string,
@@ -58,7 +58,7 @@ OperationMsg.propTypes = {
 
 OperationMsg.defaultProps = {
   avatarUrl: '',
-  carriedOut: 0,
+  timestamp: 0,
   actionType: '',
   cardNumber: null,
   transaction: null,

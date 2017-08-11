@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledChatMessage, Avatar, Message, Name, Text } from './styles';
+import Wrapper, { Avatar, Message, Name, Text } from './styles';
 
 const ChatMessage = ({ isClient, avatarUrl, displayName, message }) => {
   return (
-    <StyledChatMessage isClient={isClient}>
+    <Wrapper isClient={isClient}>
       <Avatar url={avatarUrl} isClient={isClient} />
 
       <Message>
         <Name>{`${displayName}: `}</Name>
         <Text>{message}</Text>
       </Message>
-    </StyledChatMessage>
+    </Wrapper>
   );
 };
 

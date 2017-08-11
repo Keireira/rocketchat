@@ -82,4 +82,6 @@ export default styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+
+  margin-top: 30px;
 `;

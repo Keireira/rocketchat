@@ -55,12 +55,11 @@ export const Caption = styled.div`
   color: ${({ theme }) => theme.jet(1)};
 `;
 
-export const StyledChatField = styled.div`
+export default styled.div`
   width: 100%;
-  ${'' /* height: 100vh; */}
-  ${'' /* max-height: ${toRem(322)}; */}
 
   padding: ${`${toRem(62)} ${toRem(100)} ${toRem(48)} ${toRem(100)}`};
+  z-index: 1;
 
   ${media.beta`
     padding-top: ${toRem(50)};

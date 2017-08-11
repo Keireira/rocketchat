@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ChatField from './ChatField/styles';
 
 export const Content = styled.div`
   width: 100%;
@@ -8,10 +9,12 @@ export const ScrollContainer = styled.div`
   width: 100%;
   flex-grow: 1;
 
-  overflow: auto;
+  overflow-y: auto;
   padding-right: 70px;
+  margin-right: 9px;
 
   &::-webkit-scrollbar {
+    position: absolute;
     overflow: hidden;
 
     width: 9px;
@@ -46,4 +49,8 @@ export const StyledChat = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  & > ${ChatField} {
+    box-shadow: ${({ showBorder }) => (showBorder) ? '0 5px 5px rgba(0, 0, 0, 0.05)' : 'none'};
+  }
 `;

@@ -42,8 +42,10 @@ export const Avatar = styled.div`
   }}
 `;
 
-export const StyledChatMessage = styled.div`
+export default styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: ${({ isClient }) => (isClient) ? 'row' : 'row-reverse'};
+
+  margin-top: 30px;
 `;
