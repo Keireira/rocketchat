@@ -29,6 +29,10 @@ class Sidebar extends React.PureComponent {
     if (typeof this.props.clearDepositsList === 'function') {
       this.props.clearDepositsList();
     }
+
+    if (typeof this.props.clearSelectedOperation === 'function') {
+      this.props.clearSelectedOperation();
+    }
   };
 
   renderAccounts = ({ match }) => {
@@ -44,6 +48,7 @@ class Sidebar extends React.PureComponent {
   renderAccountDetails = ({ match }) => {
     return (
       <AccountDetails
+        sendOperationToChat={this.props.sendOperationToChat}
         getAccountData={this.props.getAccountData}
         clearAccount={this.props.clearAccount}
         accountData={this.props.account}
@@ -65,6 +70,7 @@ class Sidebar extends React.PureComponent {
   renderDepositDetails = ({ match }) => {
     return (
       <DepositDetails
+        sendOperationToChat={this.props.sendOperationToChat}
         getDepositData={this.props.getDepositData}
         clearDeposit={this.props.clearDeposit}
         deposit={this.props.deposit}

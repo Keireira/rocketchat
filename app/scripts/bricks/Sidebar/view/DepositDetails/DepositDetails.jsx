@@ -44,6 +44,7 @@ class DepositDetails extends React.PureComponent {
         <HistoryItem
           key={item.created}
           currency={this.props.deposit.currency}
+          sendOperationToChat={this.props.sendOperationToChat}
           {...item}
         />
       );

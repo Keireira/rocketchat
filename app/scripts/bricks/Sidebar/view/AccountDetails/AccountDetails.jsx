@@ -45,6 +45,7 @@ class AccountDetails extends React.PureComponent {
         <HistoryCard
           key={item.carriedOut}
           currency={this.props.accountData.currency}
+          sendOperationToChat={this.props.sendOperationToChat}
           {...item}
         />
       );
