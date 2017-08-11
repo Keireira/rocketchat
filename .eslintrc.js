@@ -37,6 +37,8 @@ module.exports = {
     'no-confusing-arrow': 0,
     'template-curly-spacing': 0,
     'no-prototype-builtins': 0,
+    'no-param-reassign': 0,
+    'class-methods-use-this': 0,
     'comma-dangle': [2, 'always-multiline'],
     'no-use-before-define': [2, {
       'functions': false,

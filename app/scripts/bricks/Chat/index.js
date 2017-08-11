@@ -6,10 +6,12 @@ import selectors from 'selectors';
 import View from 'bricks/Chat/view';
 
 const makeMapStateToProps = () => {
-  const getCurrentLocale = selectors.makeGetCurrentLocale();
+  const getLastClient = selectors.makeGetLastClient();
+  const getOperator = selectors.makeGetOperator();
 
   const mapStateToProps = (state) => ({
-    locale: getCurrentLocale(state),
+    lastClient: getLastClient(state),
+    operator: getOperator(state),
   });
 
   return mapStateToProps;

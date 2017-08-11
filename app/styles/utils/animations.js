@@ -11,22 +11,6 @@ export const scale = keyframes`
   }
 `;
 
-export const trambling = keyframes`
-  0%, 50%, 100% {
-    transform: rotate(0deg);
-  }
-
-  10%, 30% {
-    transform: rotate(-10deg);
-  }
-
-  20%, 40% {
-    transform: rotate(10deg);
-  }
-`;
-
-
 export default {
   scale,
-  trambling,
 };
