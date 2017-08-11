@@ -6,7 +6,7 @@ import { formatBalance } from 'helpers';
 import { MingleShareicon } from 'icons/ux';
 import { StyledTxAmount, Positive, Negative, IconWrapper } from './styles';
 
-const TxAmount = ({ amount, positive, currency }) => {
+const TxAmount = ({ amount, positive, currency, sendOperation }) => {
   const formattedAmouunt = formatBalance(amount);
   const txAmount = (positive)
     ? <Positive>{`${formattedAmouunt} ${currency}`}</Positive>
@@ -16,7 +16,7 @@ const TxAmount = ({ amount, positive, currency }) => {
     <StyledTxAmount>
       {txAmount}
 
-      <IconWrapper to="/">
+      <IconWrapper to="/" onClick={sendOperation}>
         <MingleShareicon width={16} height={16} />
       </IconWrapper>
     </StyledTxAmount>
