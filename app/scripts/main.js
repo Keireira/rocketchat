@@ -12,6 +12,7 @@ const initialState = {
     currentLocale: 'ru',
   },
   users: {
+    lastClient: {},
     operator: {
       id: 9999,
       isClient: false,
