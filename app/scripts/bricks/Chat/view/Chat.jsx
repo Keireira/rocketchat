@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { socket } from 'api';
+
 import ChatField from './ChatField';
 import ChatMessage from './ChatMessage';
 import OperationMsg from './OperationMsg';
@@ -11,8 +13,48 @@ import {
 } from './styles';
 
 class Chat extends React.PureComponent {
-  state = {
-    showBorder: false,
+  constructor() {
+    super();
+
+    this.socket = null;
+    this.state = {
+      showBorder: false,
+      messages: [],
+    };
+  };
+
+  componentWillMount() {
+    this.initSocketConnection();
+  };
+
+  componentWillUnmount() {
+    this.destroySocketConnection();
+  };
+
+  initSocketConnection = () => {
+    this.socket = socket();
+
+    this.socket.on('connect', () => {
+      this.socket.emit('msg history');
+    });
+
+    this.socket.on('msg history', ({ messages }) => {
+      this.setState({ messages });
+      this.socket.emit('msg init');
+    });
+
+    this.socket.on('msg to client', (data) => {
+      console.log(data);
+    });
+  };
+
+  destroySocketConnection = () => {
+    this.socket.disconnect();
+    this.socket = null;
+  };
+
+  sendMessage = (message) => {
+    this.socket.emit('msg to server', message);
   };
 
   scrollChat = (event) => {
@@ -36,7 +78,7 @@ class Chat extends React.PureComponent {
 
     return (
       <StyledChat showBorder={this.state.showBorder}>
-        <ChatField sendMessage={undefined} />
+        <ChatField sendMessage={this.sendMessage} />
 
         <ChatHistoryWrapper>
           <ScrollContainer onScroll={this.scrollChat}>

@@ -15,7 +15,9 @@ const startServer = ({ app, server }) => {
       }, 4000);
     });
 
-    socket.on('msg history', messages);
+    socket.on('msg history', () => {
+      io.sockets.emit('msg history', messages);
+    });
 
     socket.on('msg init', () => {
       setTimeout(() => {
@@ -28,10 +30,12 @@ const startServer = ({ app, server }) => {
       }, 2000);
     });
 
-    socket.on('msg to server', () => {
+    socket.on('msg to server', (message) => {
+      io.sockets.emit('msg to client', message);
+
       setTimeout(() => {
-        io.sockets.emit('msg to client', clientsCtrl.generateMessage);
-      }, random(100, 3000));
+        io.sockets.emit('msg to client', clientsCtrl.generateMessage());
+      }, random(2000, 5000));
     });
 
     socket.on('disconnect', () => {});

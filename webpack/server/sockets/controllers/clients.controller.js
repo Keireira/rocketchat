@@ -18,7 +18,7 @@ const messages = [
 const createClient = () => {
   const isClient = true;
   const userId = random(111, 999);
-  const avatarUrl = 'https://unsplash.it/120/120';
+  const avatarUrl = `https://randomuser.me/api/portraits/women/${random(0, 90)}.jpg`;
   const displayName = names[random(0, names.length - 1)];
 
   return { userId, isClient, avatarUrl, displayName };
@@ -33,10 +33,12 @@ module.exports = {
     client: createClient(),
   }),
 
-  generateMessage: ({
-    isClient: true,
-    type: 'message',
-    timestamp: new Date().getTime() / 1000 | 0,
-    message: messages[random(0, messages.length - 1)],
-  }),
+  generateMessage: () => {
+    return {
+      isClient: true,
+      type: 'message',
+      timestamp: new Date().getTime() / 1000 | 0,
+      message: messages[random(0, messages.length - 1)],
+    };
+  },
 };

@@ -25,6 +25,7 @@ module.exports = {
   'rules': {
     // General JS'
     'no-empty': 0,
+    'no-bitwise': 0,
     'dot-notation': [2, {
       'allowPattern': '^(START|FINISH|INIT|DONE|NOT_MODIFIED|304|FAIL)$',
     }],
