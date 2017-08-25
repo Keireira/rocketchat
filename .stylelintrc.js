@@ -23,14 +23,12 @@ module.exports = {
     'number-leading-zero': 'never',
     'number-no-trailing-zeros': null,
     'function-url-quotes': null,
-    'function-url-data-uris': null,
     'font-family-name-quotes': 'always-unless-keyword',
     'at-rule-no-vendor-prefix': true,
     'rule-empty-line-before': null,
     'declaration-empty-line-before': null,
     'selector-type-case': null,
     'selector-type-no-unknown': null,
-    'selector-no-type': null,
     'declaration-block-no-duplicate-properties': [true, {
       'ignoreProperties': ['undefined', '-styled-mixin']
     }],
